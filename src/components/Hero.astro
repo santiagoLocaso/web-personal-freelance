@@ -1,0 +1,488 @@
+<section class="hero">
+  <div class="hero-light hero-light-one"></div>
+  <div class="hero-light hero-light-two"></div>
+
+  <div class="container hero-container">
+    <div class="hero-content">
+      <span class="hero-eyebrow"> Desarrollo web freelance </span>
+
+      <h1>
+        Sitios web que convierten ideas en
+        <span> experiencias digitales.</span>
+      </h1>
+
+      <p class="hero-description">
+        Diseño y desarrollo páginas modernas, rápidas y personalizadas para
+        profesionales, empresas y organizaciones que buscan destacarse.
+      </p>
+
+      <div class="hero-actions">
+        <a href="/proyectos" class="button button-primary">
+          Ver proyectos
+
+          <svg viewBox="0 0 20 20" aria-hidden="true">
+            <path
+              d="M4 10h11M11 5l5 5-5 5"
+              fill="none"
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="1.8"></path>
+          </svg>
+        </a>
+
+        <a href="/contacto" class="button button-secondary">
+          Contame tu proyecto
+        </a>
+      </div>
+
+      <div class="hero-benefits">
+        <span>Diseño personalizado</span>
+        <span>Adaptado a celulares</span>
+        <span>Publicación completa</span>
+      </div>
+    </div>
+
+    <div class="hero-visual" aria-hidden="true">
+      <div class="browser-card">
+        <div class="browser-header">
+          <div class="browser-dots">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+
+          <div class="browser-address">santiagolocaso.com.ar</div>
+        </div>
+
+        <div class="browser-content">
+          <div class="code-label">
+            <span>&lt;</span>
+            Desarrollo web
+            <span>/&gt;</span>
+          </div>
+
+          <div class="visual-heading">
+            Diseño.
+            <span>Desarrollo.</span>
+            Resultados.
+          </div>
+
+          <div class="visual-lines">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+
+          <div class="visual-button"></div>
+        </div>
+      </div>
+
+      <div class="floating-card floating-card-top">
+        <span class="floating-icon">01</span>
+
+        <div>
+          <strong>Responsive</strong>
+          <small>Todos los dispositivos</small>
+        </div>
+      </div>
+
+      <div class="floating-card floating-card-bottom">
+        <span class="status-dot"></span>
+
+        <div>
+          <strong>Sitio publicado</strong>
+          <small>Rápido y optimizado</small>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .hero {
+    position: relative;
+    overflow: hidden;
+    padding: 76px 0 100px;
+    background: linear-gradient(180deg, #ffffff 0%, #f5f8fd 100%);
+  }
+
+  .hero::before {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 1px;
+    height: 100%;
+    background: linear-gradient(
+      180deg,
+      transparent,
+      rgba(23, 105, 255, 0.12),
+      transparent
+    );
+    content: "";
+  }
+
+  .hero-light {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(10px);
+    pointer-events: none;
+  }
+
+  .hero-light-one {
+    top: 60px;
+    left: -180px;
+    width: 420px;
+    height: 420px;
+    background: rgba(23, 105, 255, 0.08);
+  }
+
+  .hero-light-two {
+    right: -100px;
+    bottom: -180px;
+    width: 360px;
+    height: 360px;
+    background: rgba(63, 123, 255, 0.1);
+  }
+
+  .hero-container {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    grid-template-columns: minmax(0, 1.08fr) minmax(430px, 0.92fr);
+    gap: 74px;
+    align-items: center;
+  }
+
+  .hero-content {
+    padding: 30px 0;
+  }
+
+  .hero-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 23px;
+    color: var(--color-primary);
+    font-size: 0.76rem;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+  }
+
+  .hero-eyebrow::before {
+    width: 28px;
+    height: 2px;
+    background: currentColor;
+    content: "";
+  }
+
+  h1 {
+    max-width: 760px;
+    margin-bottom: 26px;
+    font-size: clamp(3.3rem, 5.7vw, 5.65rem);
+    letter-spacing: -0.06em;
+  }
+
+  h1 span {
+    color: var(--color-primary);
+  }
+
+  .hero-description {
+    max-width: 610px;
+    margin-bottom: 34px;
+    font-size: clamp(1rem, 1.4vw, 1.17rem);
+  }
+
+  .hero-actions {
+    display: flex;
+    gap: 13px;
+    flex-wrap: wrap;
+  }
+
+  .hero-actions svg {
+    width: 18px;
+    height: 18px;
+  }
+
+  .hero-benefits {
+    display: flex;
+    gap: 28px;
+    margin-top: 39px;
+    flex-wrap: wrap;
+  }
+
+  .hero-benefits span {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    color: #475467;
+    font-size: 0.78rem;
+    font-weight: 600;
+  }
+
+  .hero-benefits span::before {
+    width: 6px;
+    height: 6px;
+    background: var(--color-primary);
+    border-radius: 50%;
+    box-shadow: 0 0 0 5px rgba(23, 105, 255, 0.1);
+    content: "";
+  }
+
+  .hero-visual {
+    position: relative;
+    min-height: 560px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .browser-card {
+    position: relative;
+    width: min(100%, 510px);
+    overflow: hidden;
+    background: var(--color-dark);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 26px;
+    box-shadow: var(--shadow-large);
+    transform: rotate(1.8deg);
+  }
+
+  .browser-card::after {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(
+      circle at 75% 25%,
+      rgba(23, 105, 255, 0.22),
+      transparent 34%
+    );
+    content: "";
+    pointer-events: none;
+  }
+
+  .browser-header {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    height: 58px;
+    align-items: center;
+    gap: 20px;
+    padding: 0 20px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .browser-dots {
+    display: flex;
+    gap: 6px;
+  }
+
+  .browser-dots span {
+    width: 7px;
+    height: 7px;
+    background: #405067;
+    border-radius: 50%;
+  }
+
+  .browser-address {
+    flex: 1;
+    padding: 7px 14px;
+    color: #77869b;
+    background: rgba(255, 255, 255, 0.04);
+    border-radius: 999px;
+    font-size: 0.62rem;
+    text-align: center;
+  }
+
+  .browser-content {
+    position: relative;
+    z-index: 1;
+    min-height: 430px;
+    padding: 70px 46px 55px;
+  }
+
+  .code-label {
+    display: inline-flex;
+    gap: 7px;
+    margin-bottom: 28px;
+    color: #a6b2c3;
+    font-family: monospace;
+    font-size: 0.74rem;
+  }
+
+  .code-label span {
+    color: var(--color-primary);
+  }
+
+  .visual-heading {
+    max-width: 370px;
+    color: #ffffff;
+    font-family: var(--font-heading);
+    font-size: clamp(2.6rem, 5vw, 4.6rem);
+    font-weight: 700;
+    line-height: 0.98;
+    letter-spacing: -0.055em;
+  }
+
+  .visual-heading span {
+    display: block;
+    color: var(--color-primary);
+  }
+
+  .visual-lines {
+    display: grid;
+    gap: 10px;
+    margin-top: 34px;
+  }
+
+  .visual-lines span {
+    height: 6px;
+    background: #233247;
+    border-radius: 10px;
+  }
+
+  .visual-lines span:nth-child(1) {
+    width: 78%;
+  }
+
+  .visual-lines span:nth-child(2) {
+    width: 62%;
+  }
+
+  .visual-lines span:nth-child(3) {
+    width: 48%;
+  }
+
+  .visual-button {
+    width: 118px;
+    height: 37px;
+    margin-top: 29px;
+    background: var(--color-primary);
+    border-radius: 999px;
+  }
+
+  .floating-card {
+    position: absolute;
+    z-index: 3;
+    display: flex;
+    min-width: 205px;
+    align-items: center;
+    gap: 13px;
+    padding: 15px 17px;
+    background: rgba(255, 255, 255, 0.92);
+    border: 1px solid rgba(226, 232, 240, 0.88);
+    border-radius: 15px;
+    box-shadow: var(--shadow-small);
+    backdrop-filter: blur(12px);
+  }
+
+  .floating-card-top {
+    top: 55px;
+    right: -18px;
+  }
+
+  .floating-card-bottom {
+    bottom: 48px;
+    left: -35px;
+  }
+
+  .floating-card div {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .floating-card strong {
+    color: var(--color-text);
+    font-size: 0.78rem;
+  }
+
+  .floating-card small {
+    margin-top: 2px;
+    color: var(--color-text-soft);
+    font-size: 0.65rem;
+  }
+
+  .floating-icon {
+    display: grid;
+    width: 38px;
+    height: 38px;
+    place-items: center;
+    color: var(--color-primary);
+    background: var(--color-primary-soft);
+    border-radius: 10px;
+    font-family: var(--font-heading);
+    font-size: 0.7rem;
+    font-weight: 700;
+  }
+
+  .status-dot {
+    width: 12px;
+    height: 12px;
+    background: #24b47e;
+    border-radius: 50%;
+    box-shadow: 0 0 0 6px rgba(36, 180, 126, 0.12);
+  }
+
+  @media (max-width: 1030px) {
+    .hero-container {
+      grid-template-columns: 1fr;
+    }
+
+    .hero-content {
+      max-width: 780px;
+    }
+
+    .hero-visual {
+      width: min(100%, 650px);
+      margin-inline: auto;
+    }
+  }
+
+  @media (max-width: 600px) {
+    .hero {
+      padding: 48px 0 72px;
+    }
+
+    h1 {
+      font-size: clamp(3rem, 14vw, 4.4rem);
+    }
+
+    .hero-actions {
+      flex-direction: column;
+    }
+
+    .hero-benefits {
+      display: grid;
+      gap: 16px;
+    }
+
+    .hero-visual {
+      min-height: 440px;
+      margin-top: 34px;
+    }
+
+    .browser-content {
+      min-height: 350px;
+      padding: 52px 28px 42px;
+    }
+
+    .browser-header {
+      padding: 0 14px;
+    }
+
+    .floating-card {
+      min-width: auto;
+      padding: 12px;
+    }
+
+    .floating-card-top {
+      top: 18px;
+      right: -4px;
+    }
+
+    .floating-card-bottom {
+      bottom: 15px;
+      left: -4px;
+    }
+  }
+</style>

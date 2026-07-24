@@ -1,0 +1,154 @@
+<section class="contact-cta">
+  <div class="contact-cta-light"></div>
+
+  <div class="container contact-cta-container">
+    <div class="contact-cta-content">
+      <span class="contact-cta-eyebrow"> ¿Tenés un proyecto en mente? </span>
+
+      <h2>Convirtamos tu idea en una web profesional.</h2>
+
+      <p>
+        Contame qué necesitás, cuáles son tus objetivos y en qué etapa se
+        encuentra tu proyecto. Te responderé para analizar juntos la mejor
+        solución.
+      </p>
+    </div>
+
+    <div class="contact-cta-actions">
+      <a href="/contacto" class="button button-primary">
+        Contame tu proyecto
+
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path
+            d="M5 12h14M13 6l6 6-6 6"
+            fill="none"
+            stroke="currentColor"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="1.8"></path>
+        </svg>
+      </a>
+
+      <a href="mailto:contacto@santiagolocaso.com.ar" class="contact-email">
+        contacto@santiagolocaso.com.ar
+      </a>
+    </div>
+  </div>
+</section>
+
+<style>
+  .contact-cta {
+    position: relative;
+    overflow: hidden;
+    padding: 105px 0;
+    background: var(--color-dark);
+  }
+
+  .contact-cta::before {
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+    background-size: 42px 42px;
+    content: "";
+    pointer-events: none;
+  }
+
+  .contact-cta-light {
+    position: absolute;
+    top: -190px;
+    right: -100px;
+    width: 480px;
+    height: 480px;
+    background: rgba(23, 105, 255, 0.18);
+    border-radius: 50%;
+    filter: blur(15px);
+  }
+
+  .contact-cta-container {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    grid-template-columns: minmax(0, 1.2fr) minmax(300px, 0.6fr);
+    gap: 90px;
+    align-items: center;
+  }
+
+  .contact-cta-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 18px;
+    color: var(--color-primary);
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.13em;
+    text-transform: uppercase;
+  }
+
+  .contact-cta-eyebrow::before {
+    width: 28px;
+    height: 2px;
+    background: currentColor;
+    content: "";
+  }
+
+  .contact-cta h2 {
+    max-width: 790px;
+    margin-bottom: 22px;
+    color: #ffffff;
+    font-size: clamp(2.3rem, 4vw, 3.8rem);
+    line-height: 1.07;
+  }
+
+  .contact-cta-content p {
+    max-width: 680px;
+    margin-bottom: 0;
+    color: #9aa8bc;
+    font-size: 1rem;
+  }
+
+  .contact-cta-actions {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .contact-cta-actions svg {
+    width: 19px;
+    height: 19px;
+  }
+
+  .contact-email {
+    color: #9eacbf;
+    font-size: 0.84rem;
+    transition: color var(--transition);
+  }
+
+  .contact-email:hover {
+    color: #ffffff;
+  }
+
+  @media (max-width: 850px) {
+    .contact-cta-container {
+      grid-template-columns: 1fr;
+      gap: 38px;
+    }
+  }
+
+  @media (max-width: 600px) {
+    .contact-cta {
+      padding: 76px 0;
+    }
+
+    .contact-cta h2 {
+      font-size: clamp(2.2rem, 10vw, 3rem);
+    }
+
+    .contact-cta-actions {
+      width: 100%;
+    }
+  }
+</style>

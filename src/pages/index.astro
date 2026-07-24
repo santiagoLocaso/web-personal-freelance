@@ -1,17 +1,457 @@
 ---
+import MainLayout from "../layouts/MainLayout.astro";
+import Hero from "../components/Hero.astro";
+import ProjectCard from "../components/ProjectCard.astro";
+import { projects } from "../data/projects";
+import ServiceCard from "../components/ServiceCard.astro";
+import { services } from "../data/services";
+import Process from "../components/Process.astro";
+import AboutPreview from "../components/AboutPreview.astro";
+import ContactCTA from "../components/ContactCTA.astro";
 
+const featuredProjectIds = [
+  "locaso-asociados",
+  "calendario-espacial",
+  "salinas-consultora",
+];
+
+const featuredProjects = featuredProjectIds
+  .map((id) => projects.find((project) => project.id === id))
+  .filter(
+    (project): project is (typeof projects)[number] => project !== undefined,
+  );
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<MainLayout>
+  <Hero />
+
+  <section class="intro-section">
+    <div class="container intro-grid">
+      <div>
+        <span class="section-eyebrow"> Soluciones digitales </span>
+
+        <h2>
+          Una web no debería ser solamente atractiva. También debe comunicar,
+          funcionar y generar confianza.
+        </h2>
+      </div>
+
+      <div class="intro-content">
+        <p>
+          Desarrollo cada proyecto a partir de sus necesidades reales,
+          combinando diseño, tecnología y una comunicación clara durante todo el
+          proceso.
+        </p>
+
+        <div class="intro-features">
+          <article class="intro-feature">
+            <span class="intro-feature-number">01</span>
+
+            <div>
+              <h3>Diseño adaptado a tu identidad</h3>
+
+              <p>
+                Cada sitio se construye respetando el estilo, los objetivos y la
+                personalidad de la marca.
+              </p>
+            </div>
+          </article>
+
+          <article class="intro-feature">
+            <span class="intro-feature-number">02</span>
+
+            <div>
+              <h3>Experiencia en todos los dispositivos</h3>
+
+              <p>
+                La navegación se diseña cuidadosamente para computadoras,
+                tablets y celulares.
+              </p>
+            </div>
+          </article>
+
+          <article class="intro-feature">
+            <span class="intro-feature-number">03</span>
+
+            <div>
+              <h3>Acompañamiento de principio a fin</h3>
+
+              <p>
+                Desde la organización del contenido hasta el dominio, la
+                publicación y la puesta en funcionamiento.
+              </p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="featured-projects-section">
+    <div class="container featured-projects-heading">
+      <div>
+        <span class="section-eyebrow"> Proyectos destacados </span>
+
+        <h2 class="section-title">
+          Trabajos que convierten ideas en sitios reales.
+        </h2>
+      </div>
+
+      <div class="featured-projects-introduction">
+        <p>
+          Una selección de proyectos desarrollados para profesionales, empresas
+          y organizaciones con diferentes necesidades y objetivos.
+        </p>
+
+        <a href="/proyectos" class="all-projects-link">
+          Ver todos los proyectos
+
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path
+              d="M5 12h14M13 6l6 6-6 6"
+              fill="none"
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="1.8"></path>
+          </svg>
+        </a>
+      </div>
+    </div>
+
+    <div class="container featured-projects-grid">
+      {featuredProjects.map((project) => <ProjectCard project={project} />)}
+    </div>
+
+    <div class="container featured-projects-mobile-action">
+      <a href="/proyectos" class="button button-secondary">
+        Ver todos los proyectos
+
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path
+            d="M5 12h14M13 6l6 6-6 6"
+            fill="none"
+            stroke="currentColor"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="1.8"></path>
+        </svg>
+      </a>
+    </div>
+  </section>
+  <section class="home-services">
+    <div class="container home-services-heading">
+      <div>
+        <span class="section-eyebrow"> Servicios </span>
+
+        <h2 class="section-title">
+          Soluciones adaptadas a los objetivos de cada proyecto.
+        </h2>
+      </div>
+
+      <div class="home-services-introduction">
+        <p>
+          Desde una página institucional hasta una tienda online, cada
+          desarrollo se planifica según las necesidades reales del negocio.
+        </p>
+
+        <a href="/servicios" class="home-services-link">
+          Conocer todos los servicios
+
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path
+              d="M5 12h14M13 6l6 6-6 6"
+              fill="none"
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="1.8"></path>
+          </svg>
+        </a>
+      </div>
+    </div>
+
+    <div class="container home-services-grid">
+      {
+        services.map((service) => (
+          <ServiceCard service={service} variant="dark" />
+        ))
+      }
+    </div>
+
+    <div class="container home-services-mobile-action">
+      <a href="/servicios" class="button button-primary">
+        Conocer todos los servicios
+      </a>
+    </div>
+  </section>
+  <Process />
+  <AboutPreview />
+  <ContactCTA />
+</MainLayout>
+
+<style>
+  .featured-projects-section {
+    padding: 120px 0 130px;
+    overflow: hidden;
+    background: #ffffff;
+  }
+
+  .featured-projects-heading {
+    display: grid;
+    grid-template-columns: minmax(0, 1.15fr) minmax(280px, 0.65fr);
+    gap: 90px;
+    align-items: end;
+    margin-bottom: 64px;
+  }
+
+  .featured-projects-heading h2 {
+    max-width: 760px;
+    margin-bottom: 0;
+  }
+
+  .featured-projects-introduction {
+    padding-bottom: 7px;
+  }
+
+  .featured-projects-introduction p {
+    margin-bottom: 24px;
+  }
+
+  .all-projects-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    color: var(--color-text);
+    font-size: 0.84rem;
+    font-weight: 700;
+    transition: color var(--transition);
+  }
+
+  .all-projects-link svg {
+    width: 19px;
+    height: 19px;
+    transition: transform var(--transition);
+  }
+
+  .all-projects-link:hover {
+    color: var(--color-primary);
+  }
+
+  .all-projects-link:hover svg {
+    transform: translateX(5px);
+  }
+
+  .featured-projects-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 36px 26px;
+    align-items: start;
+  }
+
+  .featured-projects-mobile-action {
+    display: none;
+  }
+
+  .featured-projects-mobile-action svg {
+    width: 19px;
+    height: 19px;
+  }
+
+  @media (max-width: 1050px) {
+    .featured-projects-heading {
+      gap: 50px;
+    }
+
+    .featured-projects-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 60px 28px;
+    }
+
+    .featured-projects-grid > :global(:last-child) {
+      grid-column: 1 / -1;
+      width: calc(50% - 14px);
+      margin-inline: auto;
+    }
+  }
+
+  @media (max-width: 900px) {
+    .featured-projects-section {
+      padding: 90px 0 100px;
+    }
+
+    .featured-projects-heading {
+      grid-template-columns: 1fr;
+      gap: 24px;
+      margin-bottom: 48px;
+    }
+
+    .featured-projects-introduction {
+      max-width: 650px;
+    }
+
+    .featured-projects-grid {
+      grid-template-columns: 1fr;
+      gap: 58px;
+    }
+
+    .featured-projects-grid > :global(:last-child) {
+      grid-column: auto;
+      width: 100%;
+      margin-inline: 0;
+    }
+  }
+
+  @media (max-width: 700px) {
+    .all-projects-link {
+      display: none;
+    }
+
+    .featured-projects-mobile-action {
+      display: block;
+      margin-top: 48px;
+    }
+  }
+
+  @media (max-width: 600px) {
+    .featured-projects-section {
+      padding: 76px 0 84px;
+    }
+
+    .featured-projects-heading {
+      margin-bottom: 40px;
+    }
+
+    .featured-projects-grid {
+      gap: 52px;
+    }
+  }
+
+  .home-services {
+    position: relative;
+    padding: 120px 0 130px;
+    background:
+      radial-gradient(
+        circle at 85% 15%,
+        rgba(23, 105, 255, 0.2),
+        transparent 30%
+      ),
+      var(--color-dark-soft);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .home-services::after {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    width: min(calc(100% - 40px), var(--container-width));
+    height: 1px;
+    margin-inline: auto;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(23, 105, 255, 0.45),
+      transparent
+    );
+    content: "";
+  }
+
+  .home-services-heading {
+    display: grid;
+    grid-template-columns: minmax(0, 1.15fr) minmax(280px, 0.65fr);
+    gap: 90px;
+    align-items: end;
+    margin-bottom: 62px;
+  }
+
+  .home-services-heading h2 {
+    max-width: 800px;
+    margin-bottom: 0;
+    color: #ffffff;
+  }
+
+  .home-services-introduction {
+    padding-bottom: 7px;
+  }
+
+  .home-services-introduction p {
+    margin-bottom: 24px;
+    color: #9ba9bc;
+  }
+
+  .home-services-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    color: #ffffff;
+    font-size: 0.84rem;
+    font-weight: 700;
+    transition: color var(--transition);
+  }
+
+  .home-services-link svg {
+    width: 19px;
+    height: 19px;
+    transition: transform var(--transition);
+  }
+
+  .home-services-link:hover {
+    color: var(--color-primary);
+  }
+
+  .home-services-link:hover svg {
+    transform: translateX(5px);
+  }
+
+  .home-services-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 24px;
+  }
+
+  .home-services-mobile-action {
+    display: none;
+  }
+
+  @media (max-width: 900px) {
+    .home-services {
+      padding: 90px 0 100px;
+    }
+
+    .home-services-heading {
+      grid-template-columns: 1fr;
+      gap: 24px;
+      margin-bottom: 48px;
+    }
+
+    .home-services-introduction {
+      max-width: 650px;
+    }
+  }
+
+  @media (max-width: 700px) {
+    .home-services-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .home-services-link {
+      display: none;
+    }
+
+    .home-services-mobile-action {
+      display: block;
+      margin-top: 42px;
+    }
+  }
+
+  @media (max-width: 600px) {
+    .home-services {
+      padding: 76px 0 84px;
+    }
+
+    .home-services-heading {
+      margin-bottom: 40px;
+    }
+  }
+</style>

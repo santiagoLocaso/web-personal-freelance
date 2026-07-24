@@ -1,0 +1,488 @@
+---
+import MainLayout from "../layouts/MainLayout.astro";
+
+const technologies = [
+  "Astro",
+  "HTML",
+  "CSS",
+  "JavaScript",
+  "TypeScript",
+  "Angular",
+  "React",
+  "Node.js",
+  "Supabase",
+  "Tiendanube",
+  "WordPress",
+  "Squarespace",
+  "GitHub",
+];
+
+const principles = [
+  {
+    number: "01",
+    title: "Comunicación directa",
+    description:
+      "Trabajás directamente conmigo durante todo el proyecto, sin intermediarios y con una comunicación clara.",
+  },
+  {
+    number: "02",
+    title: "Diseño con propósito",
+    description:
+      "Cada decisión visual busca transmitir correctamente la identidad y facilitar la navegación del usuario.",
+  },
+  {
+    number: "03",
+    title: "Acompañamiento completo",
+    description:
+      "Me encargo tanto del desarrollo como del dominio, la publicación, las pruebas y la puesta en funcionamiento.",
+  },
+];
+---
+
+<MainLayout
+  title="Sobre mí | Santiago Locaso"
+  description="Conocé la formación, experiencia y forma de trabajar de Santiago Locaso, desarrollador web freelance."
+>
+  <section class="about-hero">
+    <div class="container about-hero-content">
+      <span class="section-eyebrow">Sobre mí</span>
+
+      <h1>
+        Desarrollo web con una mirada
+        <span>personal, técnica y estratégica.</span>
+      </h1>
+
+      <p>
+        Ayudo a profesionales, empresas y organizaciones a construir una
+        presencia digital clara, moderna y adaptada a sus objetivos.
+      </p>
+    </div>
+  </section>
+
+  <section class="about-introduction">
+    <div class="container about-introduction-grid">
+      <div class="about-introduction-content">
+        <span class="section-eyebrow">Quién soy</span>
+
+        <h2>
+          Soy Santiago Locaso, desarrollador web freelance y Técnico
+          Universitario en Programación.
+        </h2>
+
+        <p>
+          Soy egresado de la Universidad Tecnológica Nacional como Técnico
+          Universitario en Programación. Durante mi formación adquirí
+          conocimientos en desarrollo de aplicaciones, programación web, bases
+          de datos, diseño de interfaces y resolución de problemas mediante
+          tecnología.
+        </p>
+
+        <p>
+          Complementé esa formación trabajando en proyectos reales para
+          profesionales, empresas y organizaciones, desarrollando sitios
+          personalizados y utilizando plataformas como WordPress, Tiendanube y
+          Squarespace, además de tecnologías como Astro, JavaScript y
+          TypeScript.
+        </p>
+
+        <p>
+          Actualmente me especializo en crear sitios web claros, modernos y
+          funcionales, acompañando cada proyecto desde la organización inicial
+          de la información hasta la publicación y puesta en funcionamiento.
+        </p>
+      </div>
+
+      <div class="about-profile-card">
+        <img
+          src="/images/logos/logo-horizontal-footer.png"
+          alt="Santiago Locaso — Diseño y desarrollo web"
+        />
+
+        <div class="about-profile-information">
+          <div>
+            <span>Perfil</span>
+            <strong>Desarrollador web freelance</strong>
+          </div>
+
+          <div>
+            <span>Formación</span>
+            <strong>Técnico Universitario en Programación — UTN</strong>
+          </div>
+
+          <div>
+            <span>Ubicación</span>
+            <strong>Argentina</strong>
+          </div>
+
+          <div>
+            <span>Modalidad</span>
+            <strong>Trabajo remoto y personalizado</strong>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="about-principles">
+    <div class="container">
+      <div class="about-principles-heading">
+        <span class="section-eyebrow">Mi enfoque</span>
+
+        <h2>Una forma de trabajo basada en la confianza y la claridad.</h2>
+      </div>
+
+      <div class="about-principles-grid">
+        {
+          principles.map((principle) => (
+            <article>
+              <span>{principle.number}</span>
+              <h3>{principle.title}</h3>
+              <p>{principle.description}</p>
+            </article>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="technologies-section">
+    <div class="container technologies-container">
+      <div>
+        <span class="section-eyebrow">Herramientas</span>
+
+        <h2>Tecnologías y plataformas con las que trabajo.</h2>
+      </div>
+
+      <div class="technologies-list">
+        {technologies.map((technology) => <span>{technology}</span>)}
+      </div>
+    </div>
+  </section>
+
+  <section class="about-contact">
+    <div class="container about-contact-container">
+      <div>
+        <span>Trabajemos juntos</span>
+
+        <h2>Contame qué necesitás y empecemos a construir tu proyecto.</h2>
+      </div>
+
+      <a href="/contacto" class="button button-primary">
+        Contame tu proyecto
+
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path
+            d="M5 12h14M13 6l6 6-6 6"
+            fill="none"
+            stroke="currentColor"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="1.8"></path>
+        </svg>
+      </a>
+    </div>
+  </section>
+</MainLayout>
+
+<style>
+  .about-hero {
+    position: relative;
+    overflow: hidden;
+    padding: 110px 0 105px;
+    background:
+      radial-gradient(
+        circle at 85% 20%,
+        rgba(23, 105, 255, 0.13),
+        transparent 28%
+      ),
+      linear-gradient(180deg, #ffffff 0%, #f5f8fc 100%);
+  }
+
+  .about-hero::before {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 1px;
+    height: 100%;
+    background: linear-gradient(
+      180deg,
+      transparent,
+      rgba(23, 105, 255, 0.15),
+      transparent
+    );
+    content: "";
+  }
+
+  .about-hero-content {
+    position: relative;
+    z-index: 1;
+  }
+
+  .about-hero h1 {
+    max-width: 1050px;
+    margin-bottom: 28px;
+    font-size: clamp(3.3rem, 7vw, 6.7rem);
+    letter-spacing: -0.065em;
+  }
+
+  .about-hero h1 span {
+    display: block;
+    color: var(--color-primary);
+  }
+
+  .about-hero p {
+    max-width: 710px;
+    margin-bottom: 0;
+    font-size: clamp(1rem, 1.5vw, 1.15rem);
+  }
+
+  .about-introduction {
+    padding: 120px 0;
+    background: #ffffff;
+  }
+
+  .about-introduction-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.1fr) minmax(400px, 0.75fr);
+    gap: 100px;
+    align-items: center;
+  }
+
+  .about-introduction-content h2 {
+    margin-bottom: 27px;
+    font-size: clamp(2.4rem, 4.5vw, 4rem);
+  }
+
+  .about-introduction-content p {
+    max-width: 710px;
+    margin-bottom: 18px;
+  }
+
+  .about-profile-card {
+    padding: 38px;
+    color: #ffffff;
+    background:
+      radial-gradient(
+        circle at 85% 10%,
+        rgba(23, 105, 255, 0.25),
+        transparent 32%
+      ),
+      var(--color-dark);
+    border-radius: 28px;
+    box-shadow: var(--shadow-large);
+  }
+
+  .about-profile-card > img {
+    width: 280px;
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 32px;
+  }
+
+  .about-profile-information {
+    display: grid;
+  }
+
+  .about-profile-information > div {
+    display: flex;
+    padding: 18px 0;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 25px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .about-profile-information span {
+    color: #8290a4;
+    font-size: 0.72rem;
+    font-weight: 600;
+    text-transform: uppercase;
+  }
+
+  .about-profile-information strong {
+    max-width: 230px;
+    color: #ffffff;
+    font-size: 0.84rem;
+    text-align: right;
+  }
+
+  .about-principles {
+    padding: 110px 0;
+    background: var(--color-surface);
+  }
+
+  .about-principles-heading {
+    max-width: 760px;
+    margin-bottom: 55px;
+  }
+
+  .about-principles-heading h2 {
+    margin-bottom: 0;
+    font-size: clamp(2.4rem, 4.5vw, 4rem);
+  }
+
+  .about-principles-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 25px;
+  }
+
+  .about-principles-grid article {
+    padding: 32px;
+    background: #ffffff;
+    border: 1px solid var(--color-border);
+    border-radius: 23px;
+  }
+
+  .about-principles-grid article > span {
+    display: block;
+    margin-bottom: 40px;
+    color: var(--color-primary);
+    font-family: var(--font-heading);
+    font-size: 0.74rem;
+    font-weight: 700;
+  }
+
+  .about-principles-grid h3 {
+    margin-bottom: 14px;
+    font-size: 1.55rem;
+  }
+
+  .about-principles-grid p {
+    margin-bottom: 0;
+    font-size: 0.9rem;
+  }
+
+  .technologies-section {
+    padding: 110px 0;
+    background: #ffffff;
+  }
+
+  .technologies-container {
+    display: grid;
+    grid-template-columns: minmax(0, 0.9fr) minmax(450px, 1.1fr);
+    gap: 100px;
+    align-items: center;
+  }
+
+  .technologies-container h2 {
+    margin-bottom: 0;
+    font-size: clamp(2.4rem, 4.5vw, 4rem);
+  }
+
+  .technologies-list {
+    display: flex;
+    gap: 11px;
+    flex-wrap: wrap;
+  }
+
+  .technologies-list span {
+    padding: 12px 17px;
+    color: var(--color-text);
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 999px;
+    font-size: 0.82rem;
+    font-weight: 600;
+  }
+
+  .about-contact {
+    padding: 95px 0;
+    background: var(--color-dark);
+  }
+
+  .about-contact-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 70px;
+  }
+
+  .about-contact-container > div > span {
+    display: block;
+    margin-bottom: 16px;
+    color: var(--color-primary);
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.11em;
+    text-transform: uppercase;
+  }
+
+  .about-contact h2 {
+    max-width: 790px;
+    margin-bottom: 0;
+    color: #ffffff;
+    font-size: clamp(2.2rem, 4vw, 3.8rem);
+  }
+
+  .about-contact .button {
+    flex-shrink: 0;
+  }
+
+  .about-contact svg {
+    width: 19px;
+    height: 19px;
+  }
+
+  @media (max-width: 950px) {
+    .about-introduction-grid,
+    .technologies-container {
+      grid-template-columns: 1fr;
+      gap: 55px;
+    }
+
+    .about-profile-card {
+      width: min(100%, 600px);
+    }
+  }
+
+  @media (max-width: 800px) {
+    .about-principles-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .about-contact-container {
+      align-items: flex-start;
+      flex-direction: column;
+      gap: 34px;
+    }
+  }
+
+  @media (max-width: 600px) {
+    .about-hero {
+      padding: 70px 0 76px;
+    }
+
+    .about-hero h1 {
+      font-size: clamp(3rem, 14vw, 4.5rem);
+    }
+
+    .about-introduction,
+    .about-principles,
+    .technologies-section {
+      padding: 76px 0;
+    }
+
+    .about-profile-card {
+      padding: 27px 24px;
+      border-radius: 23px;
+    }
+
+    .about-profile-information > div {
+      flex-direction: column;
+      gap: 7px;
+    }
+
+    .about-profile-information strong {
+      text-align: left;
+    }
+
+    .about-principles-grid article {
+      padding: 26px;
+    }
+
+    .about-contact {
+      padding: 72px 0;
+    }
+  }
+</style>

@@ -1,0 +1,562 @@
+---
+import MainLayout from "../layouts/MainLayout.astro";
+
+const projectTypes = [
+  "Sitio institucional",
+  "Landing page",
+  "Tienda online",
+  "Rediseño de sitio existente",
+  "Aplicación web",
+  "Otro tipo de proyecto",
+];
+
+const budgetOptions = [
+  "Todavía no lo definí",
+  "Hasta $500.000",
+  "Entre $500.000 y $900.000",
+  "Entre $900.000 y $1.500.000",
+  "Más de $1.500.000",
+];
+---
+
+<MainLayout
+  title="Contacto | Santiago Locaso"
+  description="Contactate con Santiago Locaso para solicitar una propuesta de diseño y desarrollo web."
+>
+  <section class="contact-hero">
+    <div class="container contact-hero-content">
+      <span class="section-eyebrow">Contacto</span>
+
+      <h1>
+        Contame sobre tu proyecto y
+        <span>empecemos a construirlo.</span>
+      </h1>
+
+      <p>
+        Completá el formulario con la información inicial. Me pondré en contacto
+        para conocer mejor la propuesta y analizar la solución más adecuada.
+      </p>
+    </div>
+  </section>
+
+  <section class="contact-section">
+    <div class="container contact-grid">
+      <div class="contact-information">
+        <span class="section-eyebrow"> Hablemos </span>
+
+        <h2>Una primera conversación puede ayudarte a ordenar la idea.</h2>
+
+        <p>
+          No hace falta que tengas definido cada detalle técnico. Podemos
+          conversar sobre tus objetivos, el contenido y las funciones que
+          debería tener el sitio.
+        </p>
+
+        <div class="contact-options">
+          <article class="contact-option">
+            <div class="contact-option-icon">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path
+                  d="M4 6h16v12H4V6Z"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-linejoin="round"
+                  stroke-width="1.7"></path>
+
+                <path
+                  d="m5 7 7 6 7-6"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-linejoin="round"
+                  stroke-width="1.7"></path>
+              </svg>
+            </div>
+
+            <div>
+              <span>Correo electrónico</span>
+
+              <a href="mailto:contacto@santiagolocaso.com.ar">
+                contacto@santiagolocaso.com.ar
+              </a>
+            </div>
+          </article>
+
+          <article class="contact-option">
+            <div class="contact-option-icon">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path
+                  d="M12 21a9 9 0 1 0-7.7-4.34L3 21l4.47-1.23A8.95 8.95 0 0 0 12 21Z"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="1.7"></path>
+
+                <path
+                  d="M8.8 8.4c.4 3.5 2.2 5.3 5.7 5.8"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-width="1.7"></path>
+              </svg>
+            </div>
+
+            <div>
+              <span>WhatsApp</span>
+
+              <a
+                href="https://wa.me/5491154554411"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Enviar un mensaje
+              </a>
+            </div>
+          </article>
+
+          <article class="contact-option">
+            <div class="contact-option-icon">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path
+                  d="M12 21s7-5.1 7-12a7 7 0 1 0-14 0c0 6.9 7 12 7 12Z"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-linejoin="round"
+                  stroke-width="1.7"></path>
+
+                <circle
+                  cx="12"
+                  cy="9"
+                  r="2.4"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.7"></circle>
+              </svg>
+            </div>
+
+            <div>
+              <span>Ubicación</span>
+              <strong>Argentina · Trabajo remoto</strong>
+            </div>
+          </article>
+        </div>
+      </div>
+
+      <div class="contact-form-wrapper">
+        <div class="contact-form-heading">
+          <span>Solicitud de proyecto</span>
+          <h2>Contame qué necesitás</h2>
+
+          <p>Los campos marcados con un asterisco son obligatorios.</p>
+        </div>
+
+        <form
+          class="contact-form"
+          name="contacto"
+          method="POST"
+          action="/gracias"
+          data-netlify="true"
+          netlify-honeypot="bot-field"
+        >
+          <input type="hidden" name="form-name" value="contacto" />
+
+          <p class="hidden-field">
+            <label>
+              No completar este campo:
+              <input name="bot-field" />
+            </label>
+          </p>
+
+          <div class="form-row">
+            <div class="form-field">
+              <label for="name">
+                Nombre y apellido <span>*</span>
+              </label>
+
+              <input
+                id="name"
+                name="nombre"
+                type="text"
+                placeholder="Tu nombre"
+                autocomplete="name"
+                required
+              />
+            </div>
+
+            <div class="form-field">
+              <label for="email">
+                Correo electrónico <span>*</span>
+              </label>
+
+              <input
+                id="email"
+                name="email"
+                type="email"
+                placeholder="nombre@correo.com"
+                autocomplete="email"
+                required
+              />
+            </div>
+          </div>
+
+          <div class="form-field">
+            <label for="business">
+              Empresa, emprendimiento u organización
+            </label>
+
+            <input
+              id="business"
+              name="empresa"
+              type="text"
+              placeholder="Nombre del proyecto o negocio"
+              autocomplete="organization"
+            />
+          </div>
+
+          <div class="form-row">
+            <div class="form-field">
+              <label for="project-type">
+                Tipo de proyecto <span>*</span>
+              </label>
+
+              <select id="project-type" name="tipo-proyecto" required>
+                <option value="" selected disabled>
+                  Seleccioná una opción
+                </option>
+
+                {
+                  projectTypes.map((type) => (
+                    <option value={type}>{type}</option>
+                  ))
+                }
+              </select>
+            </div>
+          </div>
+
+          <div class="form-field">
+            <label for="message">
+              Información sobre el proyecto <span>*</span>
+            </label>
+
+            <textarea
+              id="message"
+              name="mensaje"
+              rows="7"
+              placeholder="Contame qué necesitás, cuáles son tus objetivos y si ya tenés contenido, dominio o una web existente."
+              required></textarea>
+          </div>
+
+          <button type="submit" class="button button-primary submit-button">
+            Enviar consulta
+
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path
+                d="M5 12h14M13 6l6 6-6 6"
+                fill="none"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="1.8"></path>
+            </svg>
+          </button>
+        </form>
+      </div>
+    </div>
+  </section>
+</MainLayout>
+
+<style>
+  .contact-hero {
+    position: relative;
+    overflow: hidden;
+    padding: 110px 0 105px;
+    background:
+      radial-gradient(
+        circle at 85% 20%,
+        rgba(23, 105, 255, 0.13),
+        transparent 28%
+      ),
+      linear-gradient(180deg, #ffffff 0%, #f5f8fc 100%);
+  }
+
+  .contact-hero::before {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 1px;
+    height: 100%;
+    background: linear-gradient(
+      180deg,
+      transparent,
+      rgba(23, 105, 255, 0.15),
+      transparent
+    );
+    content: "";
+  }
+
+  .contact-hero-content {
+    position: relative;
+    z-index: 1;
+  }
+
+  .contact-hero h1 {
+    max-width: 990px;
+    margin-bottom: 28px;
+    font-size: clamp(3.3rem, 7vw, 6.7rem);
+    letter-spacing: -0.065em;
+  }
+
+  .contact-hero h1 span {
+    display: block;
+    color: var(--color-primary);
+  }
+
+  .contact-hero p {
+    max-width: 720px;
+    margin-bottom: 0;
+    font-size: clamp(1rem, 1.5vw, 1.15rem);
+  }
+
+  .contact-section {
+    padding: 120px 0;
+    background: #ffffff;
+  }
+
+  .contact-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 0.8fr) minmax(520px, 1.2fr);
+    gap: 100px;
+    align-items: start;
+  }
+
+  .contact-information {
+    position: sticky;
+    top: calc(var(--header-height) + 45px);
+  }
+
+  .contact-information h2 {
+    margin-bottom: 23px;
+    font-size: clamp(2.25rem, 4vw, 3.6rem);
+  }
+
+  .contact-information > p {
+    max-width: 570px;
+    margin-bottom: 40px;
+  }
+
+  .contact-options {
+    display: grid;
+    border-top: 1px solid var(--color-border);
+  }
+
+  .contact-option {
+    display: grid;
+    grid-template-columns: 48px 1fr;
+    gap: 16px;
+    padding: 23px 0;
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .contact-option-icon {
+    display: grid;
+    width: 42px;
+    height: 42px;
+    place-items: center;
+    color: var(--color-primary);
+    background: var(--color-primary-soft);
+    border-radius: 12px;
+  }
+
+  .contact-option-icon svg {
+    width: 22px;
+    height: 22px;
+  }
+
+  .contact-option > div:last-child {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .contact-option span {
+    margin-bottom: 4px;
+    color: var(--color-text-soft);
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .contact-option a,
+  .contact-option strong {
+    color: var(--color-text);
+    font-size: 0.88rem;
+    font-weight: 600;
+  }
+
+  .contact-option a {
+    transition: color var(--transition);
+  }
+
+  .contact-option a:hover {
+    color: var(--color-primary);
+  }
+
+  .contact-form-wrapper {
+    padding: 42px;
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 28px;
+  }
+
+  .contact-form-heading {
+    margin-bottom: 35px;
+  }
+
+  .contact-form-heading > span {
+    display: block;
+    margin-bottom: 10px;
+    color: var(--color-primary);
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  .contact-form-heading h2 {
+    margin-bottom: 10px;
+    font-size: clamp(2rem, 3vw, 2.7rem);
+  }
+
+  .contact-form-heading p {
+    margin-bottom: 0;
+    font-size: 0.84rem;
+  }
+
+  .contact-form {
+    display: grid;
+    gap: 22px;
+  }
+
+  .hidden-field {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+  }
+
+  .form-row {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px;
+  }
+
+  .form-field {
+    display: flex;
+    flex-direction: column;
+    gap: 9px;
+  }
+
+  .form-field label {
+    color: var(--color-text);
+    font-size: 0.78rem;
+    font-weight: 700;
+  }
+
+  .form-field label span {
+    color: var(--color-primary);
+  }
+
+  .form-field input,
+  .form-field select,
+  .form-field textarea {
+    width: 100%;
+    border: 1px solid var(--color-border);
+    outline: none;
+    color: var(--color-text);
+    background: #ffffff;
+    border-radius: 12px;
+    transition:
+      border-color var(--transition),
+      box-shadow var(--transition);
+  }
+
+  .form-field input,
+  .form-field select {
+    min-height: 52px;
+    padding: 0 15px;
+  }
+
+  .form-field textarea {
+    min-height: 170px;
+    padding: 15px;
+    resize: vertical;
+  }
+
+  .form-field input::placeholder,
+  .form-field textarea::placeholder {
+    color: #98a2b3;
+  }
+
+  .form-field input:focus,
+  .form-field select:focus,
+  .form-field textarea:focus {
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 4px rgba(23, 105, 255, 0.1);
+  }
+
+  .submit-button {
+    justify-self: start;
+    margin-top: 5px;
+    cursor: pointer;
+  }
+
+  .submit-button svg {
+    width: 19px;
+    height: 19px;
+  }
+
+  @media (max-width: 950px) {
+    .contact-grid {
+      grid-template-columns: 1fr;
+      gap: 58px;
+    }
+
+    .contact-information {
+      position: static;
+      max-width: 720px;
+    }
+  }
+
+  @media (max-width: 600px) {
+    .contact-hero {
+      padding: 70px 0 76px;
+    }
+
+    .contact-hero h1 {
+      font-size: clamp(3rem, 14vw, 4.5rem);
+    }
+
+    .contact-section {
+      padding: 76px 0;
+    }
+
+    .contact-grid {
+      gap: 45px;
+    }
+
+    .contact-form-wrapper {
+      padding: 27px 20px;
+      border-radius: 22px;
+    }
+
+    .form-row {
+      grid-template-columns: 1fr;
+    }
+
+    .submit-button {
+      width: 100%;
+    }
+  }
+</style>

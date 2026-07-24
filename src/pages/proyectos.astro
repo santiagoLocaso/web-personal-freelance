@@ -1,0 +1,219 @@
+---
+import MainLayout from "../layouts/MainLayout.astro";
+import ProjectCard from "../components/ProjectCard.astro";
+import { projects } from "../data/projects";
+---
+
+<MainLayout
+  title="Proyectos | Santiago Locaso"
+  description="Conocé algunos de los sitios web y aplicaciones desarrollados por Santiago Locaso."
+>
+  <section class="projects-hero">
+    <div class="container projects-hero-content">
+      <span class="section-eyebrow"> Trabajos realizados </span>
+
+      <h1>
+        Proyectos desarrollados para
+        <span>necesidades reales.</span>
+      </h1>
+
+      <p>
+        Una selección de sitios institucionales, plataformas y aplicaciones web
+        desarrolladas para profesionales, empresas y organizaciones.
+      </p>
+    </div>
+  </section>
+
+  <section class="projects-section">
+    <div class="container">
+      <div class="projects-grid">
+        {projects.map((project) => <ProjectCard project={project} />)}
+      </div>
+    </div>
+  </section>
+
+  <section class="projects-contact">
+    <div class="container projects-contact-container">
+      <div>
+        <span class="projects-contact-label">
+          ¿Tenés un proyecto en mente?
+        </span>
+
+        <h2>Podemos crear una web pensada para tu negocio.</h2>
+      </div>
+
+      <a href="/contacto" class="button button-primary">
+        Contame tu proyecto
+
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path
+            d="M5 12h14M13 6l6 6-6 6"
+            fill="none"
+            stroke="currentColor"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="1.8"></path>
+        </svg>
+      </a>
+    </div>
+  </section>
+</MainLayout>
+
+<style>
+  .projects-hero {
+    position: relative;
+    overflow: hidden;
+    padding: 110px 0 105px;
+    background:
+      radial-gradient(
+        circle at 85% 20%,
+        rgba(23, 105, 255, 0.12),
+        transparent 27%
+      ),
+      linear-gradient(180deg, #ffffff 0%, #f6f8fc 100%);
+  }
+
+  .projects-hero::before {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 1px;
+    height: 100%;
+    background: linear-gradient(
+      180deg,
+      transparent,
+      rgba(23, 105, 255, 0.15),
+      transparent
+    );
+    content: "";
+  }
+
+  .projects-hero-content {
+    position: relative;
+    z-index: 1;
+  }
+
+  h1 {
+    max-width: 940px;
+    margin-bottom: 28px;
+    font-size: clamp(3.4rem, 7vw, 6.8rem);
+    letter-spacing: -0.065em;
+  }
+
+  h1 span {
+    display: block;
+    color: var(--color-primary);
+  }
+
+  .projects-hero p {
+    max-width: 690px;
+    margin-bottom: 0;
+    font-size: clamp(1rem, 1.5vw, 1.15rem);
+  }
+
+  .projects-section {
+    padding: 115px 0 130px;
+    background: #ffffff;
+  }
+
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 90px 36px;
+  }
+
+  .projects-grid > :global(:nth-child(even)) {
+    margin-top: 75px;
+  }
+
+  .projects-contact {
+    padding: 95px 0;
+    background: var(--color-dark);
+  }
+
+  .projects-contact-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 70px;
+  }
+
+  .projects-contact-label {
+    display: block;
+    margin-bottom: 16px;
+    color: var(--color-primary);
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  .projects-contact h2 {
+    max-width: 750px;
+    margin-bottom: 0;
+    color: #ffffff;
+    font-size: clamp(2.2rem, 4vw, 3.8rem);
+  }
+
+  .projects-contact .button {
+    flex-shrink: 0;
+  }
+
+  .projects-contact svg {
+    width: 19px;
+    height: 19px;
+  }
+
+  @media (max-width: 900px) {
+    .projects-hero {
+      padding: 90px 0;
+    }
+
+    .projects-section {
+      padding: 90px 0 105px;
+    }
+
+    .projects-grid {
+      gap: 70px 26px;
+    }
+
+    .projects-grid > :global(:nth-child(even)) {
+      margin-top: 45px;
+    }
+
+    .projects-contact-container {
+      align-items: flex-start;
+      flex-direction: column;
+      gap: 35px;
+    }
+  }
+
+  @media (max-width: 700px) {
+    .projects-grid {
+      grid-template-columns: 1fr;
+      gap: 58px;
+    }
+
+    .projects-grid > :global(:nth-child(even)) {
+      margin-top: 0;
+    }
+  }
+
+  @media (max-width: 600px) {
+    .projects-hero {
+      padding: 70px 0 76px;
+    }
+
+    h1 {
+      font-size: clamp(3rem, 14vw, 4.5rem);
+    }
+
+    .projects-section {
+      padding: 74px 0 85px;
+    }
+
+    .projects-contact {
+      padding: 72px 0;
+    }
+  }
+</style>

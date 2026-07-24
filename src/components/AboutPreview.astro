@@ -1,0 +1,298 @@
+<section class="about-preview">
+  <div class="container about-preview-container">
+    <div class="about-preview-content">
+      <span class="section-eyebrow">Sobre mí</span>
+
+      <h2>
+        Desarrollo soluciones web combinando diseño, tecnología y atención
+        personalizada.
+      </h2>
+
+      <p>
+        Soy Santiago Locaso, desarrollador web freelance y Técnico Universitario
+        en Programación, egresado de la Universidad Tecnológica Nacional.
+      </p>
+
+      <p>
+        Trabajo junto a profesionales, empresas y organizaciones para
+        transformar sus ideas en sitios claros, modernos y preparados para
+        funcionar correctamente en todos los dispositivos.
+      </p>
+
+      <a href="/sobre-mi" class="about-preview-link">
+        Conocer más sobre mí
+
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path
+            d="M5 12h14M13 6l6 6-6 6"
+            fill="none"
+            stroke="currentColor"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="1.8"></path>
+        </svg>
+      </a>
+    </div>
+
+    <div class="about-preview-visual">
+      <div class="about-card">
+        <div class="about-card-logo">
+          <img
+            src="/images/logos/logo-horizontal-footer.png"
+            alt="Santiago Locaso — Diseño y desarrollo web"
+          />
+        </div>
+
+        <div class="about-card-content">
+          <div class="about-card-item">
+            <span>01</span>
+
+            <div>
+              <strong>Desarrollo web freelance</strong>
+              <small>Atención directa durante todo el proyecto</small>
+            </div>
+          </div>
+
+          <div class="about-card-item">
+            <span>02</span>
+
+            <div>
+              <strong>Técnico Universitario en Programación</strong>
+              <small>Egresado de la Universidad Tecnológica Nacional</small>
+            </div>
+          </div>
+
+          <div class="about-card-item">
+            <span>03</span>
+
+            <div>
+              <strong>Experiencia con proyectos reales</strong>
+              <small>Sitios institucionales, tiendas y aplicaciones</small>
+            </div>
+          </div>
+        </div>
+
+        <div class="about-card-status">
+          <span></span>
+          Disponible para nuevos proyectos
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .about-preview {
+    position: relative;
+    overflow: hidden;
+    padding: 120px 0;
+    background: #ffffff;
+  }
+
+  .about-preview::before {
+    position: absolute;
+    top: 0;
+    right: -170px;
+    width: 430px;
+    height: 430px;
+    background: rgba(23, 105, 255, 0.07);
+    border-radius: 50%;
+    content: "";
+    filter: blur(10px);
+  }
+
+  .about-preview-container {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(430px, 0.9fr);
+    gap: 100px;
+    align-items: center;
+  }
+
+  .about-preview-content h2 {
+    max-width: 650px;
+    margin-bottom: 27px;
+    font-size: clamp(2.2rem, 3.6vw, 3.45rem);
+    line-height: 1.08;
+    letter-spacing: -0.045em;
+  }
+
+  .about-preview-content p {
+    max-width: 650px;
+    margin-bottom: 18px;
+    font-size: 1rem;
+  }
+
+  .about-preview-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    margin-top: 15px;
+    color: var(--color-text);
+    font-size: 0.84rem;
+    font-weight: 700;
+    transition: color var(--transition);
+  }
+
+  .about-preview-link svg {
+    width: 19px;
+    height: 19px;
+    transition: transform var(--transition);
+  }
+
+  .about-preview-link:hover {
+    color: var(--color-primary);
+  }
+
+  .about-preview-link:hover svg {
+    transform: translateX(5px);
+  }
+
+  .about-preview-visual {
+    position: relative;
+  }
+
+  .about-card {
+    position: relative;
+    overflow: hidden;
+    padding: 40px;
+    color: #ffffff;
+    background:
+      radial-gradient(
+        circle at 85% 10%,
+        rgba(23, 105, 255, 0.27),
+        transparent 32%
+      ),
+      var(--color-dark);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 30px;
+    box-shadow: var(--shadow-large);
+  }
+
+  .about-card::before {
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+    background-size: 38px 38px;
+    content: "";
+    pointer-events: none;
+  }
+
+  .about-card-logo,
+  .about-card-content,
+  .about-card-status {
+    position: relative;
+    z-index: 1;
+  }
+
+  .about-card-logo {
+    padding-bottom: 32px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .about-card-logo img {
+    width: 280px;
+    max-width: 100%;
+    height: auto;
+  }
+
+  .about-card-content {
+    display: grid;
+    margin-top: 10px;
+  }
+
+  .about-card-item {
+    display: grid;
+    grid-template-columns: 43px 1fr;
+    gap: 15px;
+    padding: 22px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .about-card-item > span {
+    color: var(--color-primary);
+    font-family: var(--font-heading);
+    font-size: 0.72rem;
+    font-weight: 700;
+  }
+
+  .about-card-item div {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .about-card-item strong {
+    color: #ffffff;
+    font-size: 0.92rem;
+  }
+
+  .about-card-item small {
+    margin-top: 5px;
+    color: #94a3b8;
+    font-size: 0.75rem;
+  }
+
+  .about-card-status {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 27px;
+    color: #b5c0cf;
+    font-size: 0.75rem;
+    font-weight: 600;
+  }
+
+  .about-card-status span {
+    width: 9px;
+    height: 9px;
+    background: #24b47e;
+    border-radius: 50%;
+    box-shadow: 0 0 0 5px rgba(36, 180, 126, 0.13);
+  }
+
+  @media (max-width: 950px) {
+    .about-preview-container {
+      grid-template-columns: 1fr;
+      gap: 55px;
+    }
+
+    .about-preview-content {
+      max-width: 760px;
+    }
+
+    .about-preview-visual {
+      width: min(100%, 620px);
+    }
+  }
+
+  @media (max-width: 600px) {
+    .about-preview {
+      padding: 76px 0 82px;
+    }
+
+    .about-preview-container {
+      gap: 44px;
+    }
+
+    .about-preview-content h2 {
+      font-size: clamp(2.15rem, 9vw, 2.9rem);
+    }
+
+    .about-card {
+      padding: 27px 24px;
+      border-radius: 23px;
+    }
+
+    .about-card-logo img {
+      width: 230px;
+    }
+
+    .about-card-item {
+      grid-template-columns: 34px 1fr;
+      gap: 11px;
+    }
+  }
+</style>

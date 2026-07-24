@@ -1,0 +1,359 @@
+---
+import type { Service } from "../data/services";
+
+interface Props {
+  service: Service;
+  variant?: "light" | "dark";
+  detailed?: boolean;
+}
+
+const { service, variant = "light", detailed = false } = Astro.props;
+---
+
+<article
+  id={service.id}
+  class:list={[
+    "service-card",
+    `service-card-${variant}`,
+    { "service-card-detailed": detailed },
+  ]}
+>
+  <div class="service-card-header">
+    <span class="service-number">{service.number}</span>
+
+    <div class="service-icon" aria-hidden="true">
+      {
+        service.icon === "institutional" && (
+          <svg viewBox="0 0 32 32">
+            <rect
+              x="5"
+              y="7"
+              width="22"
+              height="19"
+              rx="2"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.7"
+            />
+            <path
+              d="M5 12h22M10 17h5M10 21h12"
+              fill="none"
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-width="1.7"
+            />
+          </svg>
+        )
+      }
+
+      {
+        service.icon === "landing" && (
+          <svg viewBox="0 0 32 32">
+            <rect
+              x="5"
+              y="5"
+              width="22"
+              height="22"
+              rx="2"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.7"
+            />
+            <path
+              d="M10 11h12M10 16h8M10 21h6"
+              fill="none"
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-width="1.7"
+            />
+            <path
+              d="m20 18 5 5M21 23h4v-4"
+              fill="none"
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="1.7"
+            />
+          </svg>
+        )
+      }
+
+      {
+        service.icon === "store" && (
+          <svg viewBox="0 0 32 32">
+            <path
+              d="M7 13h18l-2-6H9l-2 6Z"
+              fill="none"
+              stroke="currentColor"
+              stroke-linejoin="round"
+              stroke-width="1.7"
+            />
+            <path
+              d="M8 13v12h16V13M12 25v-7h8v7"
+              fill="none"
+              stroke="currentColor"
+              stroke-linejoin="round"
+              stroke-width="1.7"
+            />
+            <path
+              d="M7 13c0 2 3 3 4.5 1.2C13 16 16 15 16 13c0 2 3 3 4.5 1.2C22 16 25 15 25 13"
+              fill="none"
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-width="1.7"
+            />
+          </svg>
+        )
+      }
+
+      {
+        service.icon === "redesign" && (
+          <svg viewBox="0 0 32 32">
+            <path
+              d="M25 11a10 10 0 1 0 1 8"
+              fill="none"
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-width="1.7"
+            />
+            <path
+              d="M21 7h5v5"
+              fill="none"
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="1.7"
+            />
+            <path
+              d="m12 20 8-8 2 2-8 8-4 1 2-3Z"
+              fill="none"
+              stroke="currentColor"
+              stroke-linejoin="round"
+              stroke-width="1.7"
+            />
+          </svg>
+        )
+      }
+    </div>
+  </div>
+
+  <div class="service-card-content">
+    <h3>{service.title}</h3>
+
+    <p>{service.description}</p>
+
+    {
+      detailed && (
+        <ul>
+          {service.features.map((feature) => (
+            <li>
+              <span aria-hidden="true" />
+              {feature}
+            </li>
+          ))}
+        </ul>
+      )
+    }
+  </div>
+
+  <a
+    href="/contacto"
+    class="service-link"
+    aria-label={`Consultar por ${service.title}`}
+  >
+    Consultar servicio
+
+    <svg viewBox="0 0 24 24" aria-hidden="true">
+      <path
+        d="M5 12h14M13 6l6 6-6 6"
+        fill="none"
+        stroke="currentColor"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="1.8"></path>
+    </svg>
+  </a>
+</article>
+
+<style>
+  .service-card {
+    scroll-margin-top: calc(var(--header-height) + 30px);
+    display: flex;
+    min-height: 100%;
+    padding: 30px;
+    flex-direction: column;
+    border: 1px solid var(--color-border);
+    border-radius: 24px;
+    transition:
+      transform 300ms ease,
+      border-color 300ms ease,
+      box-shadow 300ms ease,
+      background-color 300ms ease;
+  }
+
+  .service-card-light {
+    background: #ffffff;
+  }
+
+  .service-card-dark {
+    background: rgba(255, 255, 255, 0.045);
+    border-color: rgba(255, 255, 255, 0.1);
+  }
+
+  .service-card:hover {
+    transform: translateY(-6px);
+  }
+
+  .service-card-light:hover {
+    border-color: rgba(23, 105, 255, 0.35);
+    box-shadow: 0 25px 60px rgba(6, 16, 30, 0.11);
+  }
+
+  .service-card-dark:hover {
+    background: rgba(255, 255, 255, 0.07);
+    border-color: rgba(23, 105, 255, 0.6);
+  }
+
+  .service-card-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    margin-bottom: 42px;
+  }
+
+  .service-number {
+    color: var(--color-primary);
+    font-family: var(--font-heading);
+    font-size: 0.76rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+  }
+
+  .service-icon {
+    display: grid;
+    width: 54px;
+    height: 54px;
+    place-items: center;
+    color: var(--color-primary);
+    background: var(--color-primary-soft);
+    border-radius: 15px;
+  }
+
+  .service-icon svg {
+    width: 29px;
+    height: 29px;
+  }
+
+  .service-card-dark .service-icon {
+    background: rgba(23, 105, 255, 0.14);
+  }
+
+  .service-card-content {
+    flex: 1;
+  }
+
+  h3 {
+    margin-bottom: 16px;
+    font-size: clamp(1.65rem, 3vw, 2.2rem);
+  }
+
+  .service-card-dark h3 {
+    color: #ffffff;
+  }
+
+  p {
+    margin-bottom: 0;
+    font-size: 0.94rem;
+  }
+
+  .service-card-dark p {
+    color: #9aa8bc;
+  }
+
+  ul {
+    display: grid;
+    gap: 13px;
+    margin: 28px 0 0;
+    padding: 27px 0 0;
+    border-top: 1px solid var(--color-border);
+    list-style: none;
+  }
+
+  .service-card-dark ul {
+    border-color: rgba(255, 255, 255, 0.1);
+  }
+
+  li {
+    display: flex;
+    align-items: flex-start;
+    gap: 11px;
+    color: #536174;
+    font-size: 0.86rem;
+  }
+
+  .service-card-dark li {
+    color: #a9b5c5;
+  }
+
+  li span {
+    width: 6px;
+    height: 6px;
+    margin-top: 8px;
+    flex-shrink: 0;
+    background: var(--color-primary);
+    border-radius: 50%;
+    box-shadow: 0 0 0 4px rgba(23, 105, 255, 0.11);
+  }
+
+  .service-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    align-self: flex-start;
+    margin-top: 32px;
+    color: var(--color-text);
+    font-size: 0.8rem;
+    font-weight: 700;
+    transition: color var(--transition);
+  }
+
+  .service-card-dark .service-link {
+    color: #ffffff;
+  }
+
+  .service-link svg {
+    width: 18px;
+    height: 18px;
+    transition: transform var(--transition);
+  }
+
+  .service-link:hover {
+    color: var(--color-primary);
+  }
+
+  .service-link:hover svg {
+    transform: translateX(5px);
+  }
+
+  .service-card-detailed {
+    padding: 36px;
+  }
+
+  @media (max-width: 600px) {
+    .service-card,
+    .service-card-detailed {
+      padding: 25px;
+      border-radius: 21px;
+    }
+
+    .service-card-header {
+      margin-bottom: 30px;
+    }
+
+    .service-icon {
+      width: 49px;
+      height: 49px;
+    }
+  }
+</style>

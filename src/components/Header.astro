@@ -1,0 +1,388 @@
+---
+const navigation = [
+  {
+    label: "Inicio",
+    href: "/",
+  },
+  {
+    label: "Servicios",
+    href: "/servicios",
+  },
+  {
+    label: "Proyectos",
+    href: "/proyectos",
+  },
+  {
+    label: "Sobre mí",
+    href: "/sobre-mi",
+  },
+  {
+    label: "Contacto",
+    href: "/contacto",
+  },
+];
+
+const currentPath = Astro.url.pathname;
+
+const isActive = (href: string) => {
+  if (href === "/") {
+    return currentPath === "/";
+  }
+
+  return currentPath.startsWith(href);
+};
+---
+
+<header class="site-header">
+  <div class="header-container">
+    <a href="/" class="brand" aria-label="Santiago Locaso, página de inicio">
+      <img
+        src="/images/logos/logo-horizontal-claro.png"
+        alt="Santiago Locaso — Diseño y desarrollo web"
+        class="brand-logo"
+      />
+    </a>
+
+    <nav class="desktop-navigation" aria-label="Navegación principal">
+      {
+        navigation.map((item) => (
+          <a
+            href={item.href}
+            class:list={["navigation-link", { active: isActive(item.href) }]}
+            aria-current={isActive(item.href) ? "page" : undefined}
+          >
+            {item.label}
+          </a>
+        ))
+      }
+    </nav>
+
+    <a href="/contacto" class="header-cta"> Contame tu proyecto </a>
+
+    <button
+      class="menu-button"
+      type="button"
+      aria-label="Abrir menú"
+      aria-expanded="false"
+      aria-controls="mobile-navigation"
+    >
+      <span></span>
+      <span></span>
+    </button>
+  </div>
+
+  <div class="mobile-menu" id="mobile-navigation" aria-hidden="true">
+    <nav class="mobile-navigation" aria-label="Navegación móvil">
+      {
+        navigation.map((item, index) => (
+          <a
+            href={item.href}
+            class:list={[
+              "mobile-navigation-link",
+              { active: isActive(item.href) },
+            ]}
+          >
+            {item.label}
+          </a>
+        ))
+      }
+
+      <a href="/contacto" class="button button-primary mobile-contact">
+        Solicitar presupuesto
+      </a>
+    </nav>
+  </div>
+</header>
+
+<script>
+  const initializeMobileMenu = () => {
+    const menuButton =
+      document.querySelector<HTMLButtonElement>(".menu-button");
+
+    const mobileMenu = document.querySelector<HTMLElement>(".mobile-menu");
+
+    if (!menuButton || !mobileMenu) {
+      return;
+    }
+
+    const closeMenu = () => {
+      menuButton.setAttribute("aria-expanded", "false");
+      menuButton.setAttribute("aria-label", "Abrir menú");
+
+      mobileMenu.setAttribute("aria-hidden", "true");
+      mobileMenu.classList.remove("open");
+
+      document.body.classList.remove("menu-open");
+    };
+
+    const openMenu = () => {
+      menuButton.setAttribute("aria-expanded", "true");
+      menuButton.setAttribute("aria-label", "Cerrar menú");
+
+      mobileMenu.setAttribute("aria-hidden", "false");
+      mobileMenu.classList.add("open");
+
+      document.body.classList.add("menu-open");
+    };
+
+    menuButton.addEventListener("click", () => {
+      const isOpen = menuButton.getAttribute("aria-expanded") === "true";
+
+      if (isOpen) {
+        closeMenu();
+      } else {
+        openMenu();
+      }
+    });
+
+    mobileMenu.querySelectorAll<HTMLAnchorElement>("a").forEach((link) => {
+      link.addEventListener("click", closeMenu);
+    });
+
+    window.addEventListener("resize", () => {
+      if (window.innerWidth > 900) {
+        closeMenu();
+      }
+    });
+
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape") {
+        closeMenu();
+      }
+    });
+  };
+
+  initializeMobileMenu();
+
+  document.addEventListener("astro:page-load", initializeMobileMenu);
+</script>
+
+<style>
+  .site-header {
+    position: sticky;
+    z-index: 1000;
+    top: 0;
+    height: var(--header-height);
+    background: rgba(255, 255, 255, 0.9);
+    border-bottom: 1px solid rgba(226, 232, 240, 0.78);
+    backdrop-filter: blur(18px);
+  }
+
+  .header-container {
+    position: relative;
+    z-index: 1002;
+    width: min(calc(100% - 40px), var(--container-width));
+    height: 100%;
+    margin-inline: auto;
+    display: flex;
+    align-items: center;
+    gap: 32px;
+  }
+
+  .brand {
+    display: inline-flex;
+    align-items: center;
+    flex-shrink: 0;
+  }
+
+  .brand-logo {
+    display: block;
+    width: 265px;
+    height: auto;
+    object-fit: contain;
+  }
+
+  .desktop-navigation {
+    display: flex;
+    align-items: center;
+    gap: 31px;
+    margin-left: auto;
+  }
+
+  .navigation-link {
+    position: relative;
+    padding: 10px 0;
+    color: #475467;
+    font-size: 0.87rem;
+    font-weight: 600;
+    transition: color var(--transition);
+  }
+
+  .navigation-link::after {
+    position: absolute;
+    right: 0;
+    bottom: 4px;
+    left: 0;
+    height: 2px;
+    background: var(--color-primary);
+    content: "";
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform var(--transition);
+  }
+
+  .navigation-link:hover,
+  .navigation-link.active {
+    color: var(--color-text);
+  }
+
+  .navigation-link:hover::after,
+  .navigation-link.active::after {
+    transform: scaleX(1);
+    transform-origin: left;
+  }
+
+  .header-cta {
+    display: inline-flex;
+    min-height: 44px;
+    align-items: center;
+    justify-content: center;
+    padding: 0 20px;
+    color: #ffffff;
+    background: var(--color-dark);
+    border-radius: 999px;
+    font-size: 0.82rem;
+    font-weight: 700;
+    transition:
+      background-color var(--transition),
+      transform var(--transition);
+  }
+
+  .header-cta:hover {
+    background: var(--color-primary);
+    transform: translateY(-1px);
+  }
+
+  .menu-button {
+    position: relative;
+    z-index: 1003;
+    display: none;
+    width: 44px;
+    height: 44px;
+    margin-left: auto;
+    padding: 0;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 7px;
+    background: transparent;
+    cursor: pointer;
+  }
+
+  .menu-button span {
+    width: 23px;
+    height: 2px;
+    background: var(--color-text);
+    transition:
+      transform var(--transition),
+      width var(--transition);
+  }
+
+  .menu-button[aria-expanded="true"] span:first-child {
+    transform: translateY(4.5px) rotate(45deg);
+  }
+
+  .menu-button[aria-expanded="true"] span:last-child {
+    transform: translateY(-4.5px) rotate(-45deg);
+  }
+
+  .mobile-menu {
+    position: fixed;
+    z-index: 1001;
+    top: var(--header-height);
+    right: 0;
+    bottom: 0;
+    left: 0;
+
+    visibility: hidden;
+    overflow-y: auto;
+    min-height: calc(100dvh - var(--header-height));
+    padding: 36px 20px 50px;
+
+    background: #ffffff;
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(-16px);
+
+    transition:
+      opacity var(--transition),
+      transform var(--transition),
+      visibility var(--transition);
+  }
+
+  .mobile-menu.open {
+    visibility: visible;
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0);
+  }
+
+  .mobile-navigation {
+    width: min(100%, 520px);
+    margin-inline: auto;
+  }
+
+  .mobile-navigation-link {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    padding: 20px 4px;
+    color: var(--color-text);
+    border-bottom: 1px solid var(--color-border);
+    font-family: var(--font-heading);
+    font-size: clamp(1.55rem, 7vw, 2.1rem);
+    font-weight: 600;
+    letter-spacing: -0.035em;
+  }
+
+  .mobile-navigation-link span {
+    color: var(--color-primary);
+    font-family: var(--font-body);
+    font-size: 0.68rem;
+    letter-spacing: 0.08em;
+  }
+
+  .mobile-navigation-link.active {
+    color: var(--color-primary);
+  }
+
+  .mobile-contact {
+    margin-top: 32px;
+  }
+
+  @media (max-width: 1040px) {
+    .desktop-navigation {
+      gap: 20px;
+    }
+
+    .header-cta {
+      display: none;
+    }
+  }
+
+  @media (max-width: 900px) {
+    .header-container {
+      width: min(calc(100% - 28px), var(--container-width));
+    }
+
+    .desktop-navigation {
+      display: none;
+    }
+
+    .menu-button {
+      display: flex;
+    }
+  }
+
+  @media (max-width: 600px) {
+    .brand-logo {
+      width: 280px;
+    }
+  }
+
+  @media (max-width: 380px) {
+    .brand-logo {
+      width: 258px;
+    }
+  }
+</style>

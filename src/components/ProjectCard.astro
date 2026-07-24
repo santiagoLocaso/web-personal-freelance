@@ -1,0 +1,298 @@
+---
+import type { Project } from "../data/projects";
+
+interface Props {
+  project: Project;
+}
+
+const { project } = Astro.props;
+
+const hasValidUrl =
+  project.url.startsWith("http://") || project.url.startsWith("https://");
+---
+
+{
+  hasValidUrl ? (
+    <a
+      class="project-card"
+      href={project.url}
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label={`Visitar el sitio web de ${project.title}`}
+    >
+      <div class="project-image-wrapper">
+        <img
+          src={project.image}
+          alt={project.imageAlt}
+          width="1400"
+          height="900"
+          loading="lazy"
+        />
+
+        <div class="project-overlay">
+          <span>Ver sitio</span>
+
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path
+              d="M8 16 16 8M10 8h6v6"
+              fill="none"
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="1.8"
+            />
+          </svg>
+        </div>
+      </div>
+
+      <div class="project-information">
+        <div>
+          <span class="project-category">{project.category}</span>
+          <h3>{project.title}</h3>
+        </div>
+
+        <span class="project-action" aria-hidden="true">
+          Ver sitio
+          <svg viewBox="0 0 24 24">
+            <path
+              d="M8 16 16 8M10 8h6v6"
+              fill="none"
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="1.8"
+            />
+          </svg>
+        </span>
+      </div>
+    </a>
+  ) : (
+    <article class="project-card project-card-disabled">
+      <div class="project-image-wrapper">
+        <img
+          src={project.image}
+          alt={project.imageAlt}
+          width="1400"
+          height="900"
+          loading="lazy"
+        />
+      </div>
+
+      <div class="project-information">
+        <div>
+          <span class="project-category">{project.category}</span>
+          <h3>{project.title}</h3>
+        </div>
+
+        <span class="project-action project-action-disabled">
+          Enlace pendiente
+        </span>
+      </div>
+    </article>
+  )
+}
+
+<style>
+  .project-card {
+    display: block;
+    min-width: 0;
+    color: var(--color-text);
+  }
+
+  .project-image-wrapper {
+    position: relative;
+    aspect-ratio: 16 / 10;
+    overflow: hidden;
+    padding: 26px 26px 0;
+    background:
+      radial-gradient(
+        circle at 85% 10%,
+        rgba(23, 105, 255, 0.13),
+        transparent 32%
+      ),
+      linear-gradient(145deg, #f5f8fc 0%, #e9eff7 100%);
+    border: 1px solid var(--color-border);
+    border-radius: 28px;
+    transition:
+      transform 350ms cubic-bezier(0.2, 0.75, 0.25, 1),
+      box-shadow 350ms ease,
+      border-color 350ms ease;
+  }
+
+  .project-image-wrapper::before {
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(6, 16, 30, 0.035) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(6, 16, 30, 0.035) 1px, transparent 1px);
+    background-size: 34px 34px;
+    content: "";
+    pointer-events: none;
+  }
+
+  .project-image-wrapper img {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top center;
+    border-radius: 16px 16px 0 0;
+    box-shadow: 0 24px 55px rgba(6, 16, 30, 0.2);
+    transition:
+      transform 500ms cubic-bezier(0.2, 0.75, 0.25, 1),
+      filter 350ms ease;
+  }
+
+  .project-overlay {
+    position: absolute;
+    z-index: 2;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 9px;
+    color: #ffffff;
+    background: rgba(4, 17, 35, 0.68);
+    border-radius: inherit;
+    font-size: 0.88rem;
+    font-weight: 700;
+    opacity: 0;
+    transition: opacity 300ms ease;
+    backdrop-filter: blur(3px);
+  }
+
+  .project-overlay svg {
+    width: 21px;
+    height: 21px;
+    transition: transform var(--transition);
+  }
+
+  .project-information {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 28px;
+    padding: 23px 4px 0;
+  }
+
+  .project-category {
+    display: block;
+    margin-bottom: 8px;
+    color: var(--color-primary);
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  h3 {
+    margin-bottom: 0;
+    font-size: clamp(1.6rem, 3vw, 2.15rem);
+    letter-spacing: -0.045em;
+    transition: color var(--transition);
+  }
+
+  .project-action {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    flex-shrink: 0;
+    padding-bottom: 4px;
+    color: var(--color-text);
+    font-size: 0.78rem;
+    font-weight: 700;
+    transition: color var(--transition);
+  }
+
+  .project-action svg {
+    width: 19px;
+    height: 19px;
+    transition: transform var(--transition);
+  }
+
+  .project-card:hover .project-image-wrapper {
+    border-color: rgba(23, 105, 255, 0.35);
+    box-shadow: 0 28px 65px rgba(6, 16, 30, 0.14);
+    transform: translateY(-6px);
+  }
+
+  .project-card:hover .project-image-wrapper img {
+    transform: scale(1.035);
+  }
+
+  .project-card:hover .project-overlay {
+    opacity: 1;
+  }
+
+  .project-card:hover .project-overlay svg {
+    transform: translate(3px, -3px);
+  }
+
+  .project-card:hover h3,
+  .project-card:hover .project-action {
+    color: var(--color-primary);
+  }
+
+  .project-card:hover .project-action svg {
+    transform: translate(3px, -3px);
+  }
+
+  .project-card-disabled {
+    cursor: default;
+  }
+
+  .project-card-disabled:hover .project-image-wrapper {
+    border-color: var(--color-border);
+    box-shadow: none;
+    transform: none;
+  }
+
+  .project-card-disabled:hover .project-image-wrapper img {
+    transform: none;
+  }
+
+  .project-card-disabled:hover h3 {
+    color: var(--color-text);
+  }
+
+  .project-action-disabled {
+    color: var(--color-text-soft);
+  }
+
+  @media (max-width: 700px) {
+    .project-image-wrapper {
+      padding: 18px 18px 0;
+      border-radius: 22px;
+    }
+
+    .project-image-wrapper img {
+      border-radius: 13px 13px 0 0;
+    }
+
+    .project-overlay {
+      display: none;
+    }
+
+    .project-information {
+      align-items: flex-start;
+      padding-top: 19px;
+    }
+
+    .project-action {
+      padding-top: 5px;
+    }
+  }
+
+  @media (max-width: 460px) {
+    .project-information {
+      align-items: flex-start;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .project-action {
+      padding-top: 0;
+    }
+  }
+</style>

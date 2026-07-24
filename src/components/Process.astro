@@ -1,0 +1,245 @@
+---
+const steps = [
+  {
+    number: "01",
+    title: "Primera conversación",
+    description:
+      "Hablamos sobre tu actividad, tus objetivos, el público al que querés llegar y el tipo de sitio que necesitás.",
+  },
+  {
+    number: "02",
+    title: "Planificación",
+    description:
+      "Definimos la estructura, las secciones, el contenido, el estilo visual y las herramientas más adecuadas para el proyecto.",
+  },
+  {
+    number: "03",
+    title: "Diseño y desarrollo",
+    description:
+      "Construyo el sitio y comparto avances durante el proceso para revisar detalles y realizar los ajustes necesarios.",
+  },
+  {
+    number: "04",
+    title: "Publicación y acompañamiento",
+    description:
+      "Realizo las pruebas finales, conecto el dominio, publico la web y te acompaño durante su puesta en funcionamiento.",
+  },
+];
+---
+
+<section
+  class="process-section"
+  id="como-trabajo"
+  aria-labelledby="process-title"
+>
+  <div class="container process-container">
+    <div class="process-heading">
+      <span class="section-eyebrow">Cómo trabajo</span>
+
+      <h2 id="process-title">
+        Un proceso claro y acompañado de principio a fin.
+      </h2>
+
+      <p>
+        No necesitás tener conocimientos técnicos. Te acompaño durante cada
+        etapa y te explico de manera sencilla las decisiones del proyecto.
+      </p>
+
+      <a href="/contacto" class="process-link">
+        Empezar un proyecto
+
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path
+            d="M5 12h14M13 6l6 6-6 6"
+            fill="none"
+            stroke="currentColor"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="1.8"></path>
+        </svg>
+      </a>
+    </div>
+
+    <div class="process-steps">
+      {
+        steps.map((step) => (
+          <article class="process-step">
+            <div class="process-step-number">
+              <span>{step.number}</span>
+            </div>
+
+            <div class="process-step-content">
+              <h3>{step.title}</h3>
+              <p>{step.description}</p>
+            </div>
+          </article>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<style>
+  .process-section {
+    position: relative;
+    overflow: hidden;
+    padding: 120px 0;
+    background:
+      radial-gradient(
+        circle at 10% 20%,
+        rgba(23, 105, 255, 0.09),
+        transparent 28%
+      ),
+      var(--color-surface);
+  }
+
+  .process-section::before {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 1px;
+    height: 100%;
+    background: linear-gradient(
+      180deg,
+      transparent,
+      rgba(23, 105, 255, 0.14),
+      transparent
+    );
+    content: "";
+  }
+
+  .process-container {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    grid-template-columns: minmax(0, 0.9fr) minmax(480px, 1.1fr);
+    gap: 105px;
+    align-items: start;
+  }
+
+  .process-heading {
+    position: sticky;
+    top: calc(var(--header-height) + 45px);
+  }
+
+  .process-heading h2 {
+    max-width: 650px;
+    margin-bottom: 27px;
+    font-size: clamp(2.2rem, 3.6vw, 3.45rem);
+    line-height: 1.08;
+    letter-spacing: -0.045em;
+  }
+
+  .process-heading > p {
+    max-width: 540px;
+    margin-bottom: 31px;
+    font-size: 1.02rem;
+  }
+
+  .process-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    color: var(--color-text);
+    font-size: 0.84rem;
+    font-weight: 700;
+    transition: color var(--transition);
+  }
+
+  .process-link svg {
+    width: 19px;
+    height: 19px;
+    transition: transform var(--transition);
+  }
+
+  .process-link:hover {
+    color: var(--color-primary);
+  }
+
+  .process-link:hover svg {
+    transform: translateX(5px);
+  }
+
+  .process-steps {
+    border-top: 1px solid var(--color-border);
+  }
+
+  .process-step {
+    display: grid;
+    grid-template-columns: 74px 1fr;
+    gap: 24px;
+    padding: 35px 0;
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .process-step-number {
+    display: flex;
+    align-items: flex-start;
+  }
+
+  .process-step-number span {
+    display: grid;
+    width: 46px;
+    height: 46px;
+    place-items: center;
+    color: var(--color-primary);
+    background: var(--color-primary-soft);
+    border-radius: 13px;
+    font-family: var(--font-heading);
+    font-size: 0.74rem;
+    font-weight: 700;
+  }
+
+  .process-step-content {
+    padding-top: 4px;
+  }
+
+  .process-step h3 {
+    margin-bottom: 10px;
+    font-size: clamp(1.35rem, 2.5vw, 1.8rem);
+    letter-spacing: -0.035em;
+  }
+
+  .process-step p {
+    max-width: 570px;
+    margin-bottom: 0;
+    font-size: 0.94rem;
+  }
+
+  @media (max-width: 950px) {
+    .process-container {
+      grid-template-columns: 1fr;
+      gap: 58px;
+    }
+
+    .process-heading {
+      position: static;
+      max-width: 760px;
+    }
+  }
+
+  @media (max-width: 600px) {
+    .process-section {
+      padding: 76px 0 82px;
+    }
+
+    .process-container {
+      gap: 46px;
+    }
+
+    .process-heading h2 {
+      font-size: clamp(2.15rem, 9vw, 2.9rem);
+    }
+
+    .process-step {
+      grid-template-columns: 52px 1fr;
+      gap: 15px;
+      padding: 27px 0;
+    }
+
+    .process-step-number span {
+      width: 42px;
+      height: 42px;
+    }
+  }
+</style>

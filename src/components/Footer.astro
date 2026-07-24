@@ -1,0 +1,190 @@
+<footer class="site-footer">
+  <div class="container footer-main">
+    <div class="footer-presentation">
+      <a
+        href="/"
+        class="footer-brand"
+        aria-label="Santiago Locaso, página de inicio"
+      >
+        <img
+          src="/images/logos/logo-horizontal-footer.png"
+          alt="Santiago Locaso — Diseño y desarrollo web"
+          class="footer-logo"
+        />
+      </a>
+
+      <p>
+        Desarrollo sitios web modernos, profesionales y personalizados para
+        empresas, profesionales y organizaciones.
+      </p>
+    </div>
+
+    <div class="footer-column">
+      <span class="footer-title">Navegación</span>
+
+      <a href="/">Inicio</a>
+      <a href="/servicios">Servicios</a>
+      <a href="/proyectos">Proyectos</a>
+      <a href="/sobre-mi">Sobre mí</a>
+    </div>
+
+    <div class="footer-column">
+      <span class="footer-title">Contacto</span>
+
+      <a href="/contacto">Contame tu proyecto</a>
+
+      <a href="mailto:contacto@santiagolocaso.com.ar">
+        contacto@santiagolocaso.com.ar
+      </a>
+
+      <a href="#" target="_blank" rel="noopener noreferrer"> LinkedIn </a>
+
+      <a href="#" target="_blank" rel="noopener noreferrer"> GitHub </a>
+    </div>
+  </div>
+
+  <div class="container footer-bottom">
+    <p>
+      © {new Date().getFullYear()} Santiago Locaso. Todos los derechos reservados.
+    </p>
+
+    <p>Diseñado y desarrollado por Santiago Locaso.</p>
+  </div>
+</footer>
+
+<style>
+  .site-footer {
+    padding-top: 78px;
+    color: #ffffff;
+    background: var(--color-dark);
+  }
+
+  .footer-main {
+    display: grid;
+    grid-template-columns: 1.6fr 0.7fr 1fr;
+    gap: 70px;
+    padding-bottom: 70px;
+  }
+
+  .footer-presentation {
+    min-width: 0;
+  }
+
+  .footer-brand {
+    display: inline-block;
+    width: 280px;
+    max-width: 100%;
+    margin-bottom: 26px;
+  }
+
+  .footer-logo {
+    display: block;
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+    object-position: left center;
+  }
+
+  .footer-presentation p {
+    max-width: 470px;
+    margin-bottom: 0;
+    color: #98a5b7;
+  }
+
+  .footer-column {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .footer-title {
+    margin-bottom: 9px;
+    color: #ffffff;
+    font-size: 0.74rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  .footer-column a {
+    color: #98a5b7;
+    font-size: 0.91rem;
+    transition: color var(--transition);
+  }
+
+  .footer-column a:hover {
+    color: #ffffff;
+  }
+
+  .footer-bottom {
+    display: flex;
+    min-height: 78px;
+    align-items: center;
+    justify-content: space-between;
+    gap: 28px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .footer-bottom p {
+    margin-bottom: 0;
+    color: #768397;
+    font-size: 0.77rem;
+  }
+
+  @media (max-width: 800px) {
+    .footer-main {
+      grid-template-columns: 1fr 1fr;
+      gap: 52px;
+    }
+
+    .footer-presentation {
+      grid-column: 1 / -1;
+    }
+  }
+
+  @media (max-width: 540px) {
+    .site-footer {
+      padding-top: 60px;
+    }
+
+    .footer-main {
+      grid-template-columns: 1fr;
+      gap: 42px;
+      padding-bottom: 54px;
+    }
+
+    .footer-presentation {
+      grid-column: auto;
+    }
+
+    .footer-logo {
+      width: 220px;
+    }
+
+    .footer-bottom {
+      min-height: auto;
+      padding: 26px 0;
+      align-items: flex-start;
+      flex-direction: column;
+      gap: 9px;
+    }
+  }
+  @media (max-width: 540px) {
+    .footer-brand {
+      width: 235px;
+    }
+  }
+
+  @media (max-width: 380px) {
+    .footer-brand {
+      width: 210px;
+    }
+  }
+
+  @media (max-width: 380px) {
+    .footer-logo {
+      width: 195px;
+    }
+  }
+</style>

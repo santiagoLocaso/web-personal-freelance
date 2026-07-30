@@ -2,7 +2,7 @@ export type ServiceIcon = "institutional" | "landing" | "store" | "redesign";
 
 export interface Service {
   id: string;
-  number: string;
+
   title: string;
   description: string;
   features: string[];
@@ -12,7 +12,6 @@ export interface Service {
 export const services: Service[] = [
   {
     id: "sitios-institucionales",
-    number: "01",
     title: "Sitios institucionales",
     description:
       "Páginas profesionales para presentar una empresa, consultora, estudio, fundación, emprendimiento o marca personal.",
@@ -26,7 +25,6 @@ export const services: Service[] = [
   },
   {
     id: "landing-pages",
-    number: "02",
     title: "Landing pages",
     description:
       "Páginas enfocadas en promocionar un servicio, campaña, lanzamiento o propuesta comercial específica.",
@@ -40,7 +38,6 @@ export const services: Service[] = [
   },
   {
     id: "tiendas-online",
-    number: "03",
     title: "Tiendas y productos digitales",
     description:
       "Configuración y personalización de tiendas online para vender productos, servicios, capacitaciones o contenidos digitales.",
@@ -54,7 +51,6 @@ export const services: Service[] = [
   },
   {
     id: "rediseno-web",
-    number: "04",
     title: "Rediseño y optimización",
     description:
       "Mejoras visuales y técnicas para sitios existentes que necesitan una imagen más moderna y una mejor experiencia de uso.",

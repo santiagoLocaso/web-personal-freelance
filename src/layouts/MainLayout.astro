@@ -6,27 +6,101 @@ import "../styles/global.css";
 interface Props {
   title?: string;
   description?: string;
+  image?: string;
+  imageAlt?: string;
+  noindex?: boolean;
 }
 
 const {
-  title = "Santiago Locaso | Diseño y desarrollo web",
-  description = "Diseño y desarrollo sitios web modernos, profesionales y personalizados para empresas, profesionales y organizaciones.",
+  title = "Desarrollador web freelance en Argentina | Santiago Locaso",
+  description = "Diseño y desarrollo sitios web profesionales, rápidos y personalizados para empresas, profesionales y organizaciones en Argentina.",
+  image = "/images/og/sltweb-og.jpg",
+  imageAlt = "Santiago Locaso, diseño y desarrollo de sitios web profesionales",
+  noindex = false,
 } = Astro.props;
+
+const siteURL = Astro.site ?? new URL("https://sltweb.com.ar");
+
+const canonicalURL = new URL(Astro.url.pathname, siteURL);
+const socialImageURL = new URL(image, siteURL);
+
+const websiteURL = new URL("/", siteURL).href;
+const websiteId = new URL("/#website", siteURL).href;
+const personId = new URL("/#person", siteURL).href;
+
+const structuredData = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": websiteId,
+      url: websiteURL,
+      name: "Santiago Locaso",
+      alternateName: "SLT Web",
+      description:
+        "Diseño y desarrollo web freelance para empresas, profesionales y organizaciones.",
+      inLanguage: "es-AR",
+      publisher: {
+        "@id": personId,
+      },
+    },
+    {
+      "@type": "Person",
+      "@id": personId,
+      name: "Santiago Locaso Turiaci",
+      alternateName: "Santiago Locaso",
+      url: websiteURL,
+      jobTitle: "Desarrollador web freelance",
+      nationality: {
+        "@type": "Country",
+        name: "Argentina",
+      },
+      alumniOf: {
+        "@type": "CollegeOrUniversity",
+        name: "Universidad Tecnológica Nacional",
+      },
+      knowsAbout: [
+        "Desarrollo web",
+        "Diseño web",
+        "Sitios institucionales",
+        "Landing pages",
+        "Tiendas online",
+        "Diseño responsive",
+        "Astro",
+        "JavaScript",
+        "TypeScript",
+        "Angular",
+        "Tiendanube",
+        "Squarespace",
+      ],
+    },
+  ],
+};
 ---
 
 <!doctype html>
-<html lang="es">
+<html lang="es-AR">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>{title}</title>
 
     <meta name="description" content={description} />
-    <meta name="author" content="Santiago Locaso" />
+
+    <meta name="author" content="Santiago Locaso Turiaci" />
+
     <meta name="theme-color" content="#06101e" />
 
-    <meta property="og:type" content="website" />
-    <meta property="og:title" content={title} />
-    <meta property="og:description" content={description} />
+    <meta
+      name="robots"
+      content={noindex
+        ? "noindex, nofollow"
+        : "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"}
+    />
+
+    <link rel="canonical" href={canonicalURL} />
 
     <link rel="icon" type="image/svg+xml" href="/favicon.svg?v=2" />
 
@@ -34,7 +108,44 @@ const {
 
     <link rel="apple-touch-icon" href="/apple-touch-icon.png?v=2" />
 
-    <title>{title}</title>
+    <link rel="sitemap" href="/sitemap-index.xml" />
+
+    <meta property="og:type" content="website" />
+
+    <meta property="og:locale" content="es_AR" />
+
+    <meta property="og:site_name" content="Santiago Locaso" />
+
+    <meta property="og:title" content={title} />
+
+    <meta property="og:description" content={description} />
+
+    <meta property="og:url" content={canonicalURL} />
+
+    <meta property="og:image" content={socialImageURL} />
+
+    <meta property="og:image:alt" content={imageAlt} />
+
+    <meta property="og:image:width" content="1200" />
+
+    <meta property="og:image:height" content="630" />
+
+    <meta property="og:image:type" content="image/jpeg" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <meta name="twitter:title" content={title} />
+
+    <meta name="twitter:description" content={description} />
+
+    <meta name="twitter:image" content={socialImageURL} />
+
+    <meta name="twitter:image:alt" content={imageAlt} />
+
+    <script
+      type="application/ld+json"
+      set:html={JSON.stringify(structuredData)}
+    />
   </head>
 
   <body>

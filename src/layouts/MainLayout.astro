@@ -14,7 +14,7 @@ interface Props {
 const {
   title = "Desarrollador web freelance en Argentina | Santiago Locaso",
   description = "Diseño y desarrollo sitios web profesionales, rápidos y personalizados para empresas, profesionales y organizaciones en Argentina.",
-  image = "/images/og/sltweb-og.jpg",
+  image = "/images/og/sltweb-og-v2.jpg",
   imageAlt = "Santiago Locaso, diseño y desarrollo de sitios web profesionales",
   noindex = false,
 } = Astro.props;
@@ -123,6 +123,8 @@ const structuredData = {
     <meta property="og:url" content={canonicalURL} />
 
     <meta property="og:image" content={socialImageURL} />
+
+    <meta property="og:image:secure_url" content={socialImageURL} />
 
     <meta property="og:image:alt" content={imageAlt} />
 

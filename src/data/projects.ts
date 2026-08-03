@@ -33,7 +33,7 @@ export const projects: Project[] = [
     category: "Sitio institucional",
     image: "/images/projects/transformando-vinculos.webp",
     imageAlt: "Vista del sitio web de Fundación Transformando Vínculos",
-    url: "REEMPLAZAR_POR_URL_REAL",
+    url: "https://www.transformandovinculos.group",
     featured: false,
   },
   {

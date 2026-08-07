@@ -6,6 +6,9 @@ export interface Project {
   imageAlt: string;
   url: string;
   featured: boolean;
+  summary: string;
+  service: string;
+  technologies: string[];
 }
 
 export const projects: Project[] = [
@@ -17,6 +20,10 @@ export const projects: Project[] = [
     imageAlt: "Vista del sitio web de Salinas Consultora",
     url: "https://salinasconsultora.group",
     featured: true,
+    summary:
+      "Sitio web institucional y comercial para presentar los servicios de la consultora.",
+    service: "Diseño y desarrollo de sitio institucional y tienda online.",
+    technologies: ["TiendaNube"],
   },
   {
     id: "locaso-asociados",
@@ -26,6 +33,10 @@ export const projects: Project[] = [
     imageAlt: "Vista del sitio web de Locaso y Asociados",
     url: "https://locasoyasoc.com.ar",
     featured: true,
+    summary:
+      "Sitio web institucional para presentar los servicios del estudio jurídico.",
+    service: "Diseño y desarrollo de sitio institucional",
+    technologies: ["Astro", "HTML", "TypeScript", "CSS"],
   },
   {
     id: "transformando-vinculos",
@@ -35,6 +46,10 @@ export const projects: Project[] = [
     imageAlt: "Vista del sitio web de Fundación Transformando Vínculos",
     url: "https://www.transformandovinculos.group",
     featured: false,
+    summary:
+      "Sitio web institucional para presentar la fundación y dar a conocer su trabajo.",
+    service: "Diseño y desarrollo de sitio web institucional",
+    technologies: ["Squarespace"],
   },
   {
     id: "calendario-espacial",
@@ -44,5 +59,9 @@ export const projects: Project[] = [
     imageAlt: "Vista de la aplicación Calendario Espacial",
     url: "https://calendariolanzamientosespaciales.vercel.app",
     featured: true,
+    summary:
+      "Aplicación web con información actualizada en tiempo real sobre próximos lanzamientos espaciales.",
+    service: "Diseño y desarrollo de aplicación web dinámica",
+    technologies: ["ReactJs", "Vite", "TypeScript", "CSS"],
   },
 ];

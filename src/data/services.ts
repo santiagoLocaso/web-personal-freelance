@@ -12,9 +12,9 @@ export interface Service {
 export const services: Service[] = [
   {
     id: "sitios-institucionales",
-    title: "Sitios institucionales",
+    title: "Desarrollo de sitios institucionales",
     description:
-      "Páginas profesionales para presentar una empresa, consultora, estudio, fundación, emprendimiento o marca personal.",
+      "Páginas web profesionales para empresas, estudios, profesionales yorganizaciones.",
     features: [
       "Diseño personalizado",
       "Adaptación para celulares",
@@ -25,9 +25,9 @@ export const services: Service[] = [
   },
   {
     id: "landing-pages",
-    title: "Landing pages",
+    title: "Diseño de landing pages",
     description:
-      "Páginas enfocadas en promocionar un servicio, campaña, lanzamiento o propuesta comercial específica.",
+      "Landing pages pensadas para promocionar servicios, campañas y productos.",
     features: [
       "Contenido organizado para convertir",
       "Llamados a la acción destacados",
@@ -38,9 +38,9 @@ export const services: Service[] = [
   },
   {
     id: "tiendas-online",
-    title: "Tiendas y productos digitales",
+    title: "Desarrollo de tiendas online",
     description:
-      "Configuración y personalización de tiendas online para vender productos, servicios, capacitaciones o contenidos digitales.",
+      "Tiendas online para vender productos, servicios y contenidos digitales.",
     features: [
       "Personalización visual de la tienda",
       "Configuración de medios de pago",
@@ -51,9 +51,9 @@ export const services: Service[] = [
   },
   {
     id: "rediseno-web",
-    title: "Rediseño y optimización",
+    title: "Rediseño y optimización de páginas web",
     description:
-      "Mejoras visuales y técnicas para sitios existentes que necesitan una imagen más moderna y una mejor experiencia de uso.",
+      "Mejoras visuales, técnicas y de velocidad para sitios existentes.",
     features: [
       "Actualización del diseño",
       "Mejoras en la versión móvil",

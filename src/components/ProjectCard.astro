@@ -103,7 +103,17 @@ const hasValidUrl =
   .project-card {
     display: block;
     min-width: 0;
+    height: auto;
+    align-self: start;
+    overflow: hidden;
     color: var(--color-text);
+    background: #ffffff;
+    border: 1px solid var(--color-border);
+    border-radius: 30px;
+    transition:
+      transform 350ms cubic-bezier(0.2, 0.75, 0.25, 1),
+      box-shadow 350ms ease,
+      border-color 350ms ease;
   }
 
   .project-image-wrapper {
@@ -118,8 +128,8 @@ const hasValidUrl =
         transparent 32%
       ),
       linear-gradient(145deg, #f5f8fc 0%, #e9eff7 100%);
-    border: 1px solid var(--color-border);
-    border-radius: 28px;
+    border: 0;
+    border-radius: 0;
     transition:
       transform 350ms cubic-bezier(0.2, 0.75, 0.25, 1),
       box-shadow 350ms ease,
@@ -180,7 +190,7 @@ const hasValidUrl =
     align-items: flex-end;
     justify-content: space-between;
     gap: 28px;
-    padding: 23px 4px 0;
+    padding: 26px 28px 20px;
     min-width: 0;
   }
 
@@ -228,7 +238,7 @@ const hasValidUrl =
     line-height: 1.2;
   }
 
-  .h3 {
+  h3 {
     margin-bottom: 0;
     font-size: clamp(1.6rem, 3vw, 2.15rem);
     letter-spacing: -0.045em;
@@ -253,10 +263,15 @@ const hasValidUrl =
     transition: transform var(--transition);
   }
 
-  .project-card:hover .project-image-wrapper {
+  .project-card:not(.project-card-disabled):hover {
     border-color: rgba(23, 105, 255, 0.35);
     box-shadow: 0 28px 65px rgba(6, 16, 30, 0.14);
     transform: translateY(-6px);
+  }
+
+  .project-card:not(.project-card-disabled):hover .project-image-wrapper {
+    box-shadow: none;
+    transform: none;
   }
 
   .project-card:hover .project-image-wrapper img {
@@ -303,6 +318,10 @@ const hasValidUrl =
   }
 
   @media (max-width: 700px) {
+    .project-card {
+      border-radius: 24px;
+    }
+
     .project-image-wrapper {
       padding: 18px 18px 0;
       border-radius: 22px;
@@ -318,7 +337,7 @@ const hasValidUrl =
 
     .project-information {
       align-items: flex-start;
-      padding-top: 19px;
+      padding: 22px 21px 18px;
     }
 
     .project-summary {
